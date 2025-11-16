@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Estrategia de la Rareza™ | LA ESTRATEGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            overflow: hidden;
+        }
+
+        /* SLIDES CONTAINER */
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* SLIDE BASE */
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* NAVIGATION */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(30, 45, 61, 0.9);
+            color: white;
+            border: 2px solid #7eb3d6;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-btn:hover {
+            background: #7eb3d6;
+            border-color: #7eb3d6;
+            transform: translateY(-2px);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            background: rgba(30, 45, 61, 0.9);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #7eb3d6;
+            z-index: 1000;
+        }
+
+        /* TYPOGRAPHY */
+        .slide h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .slide h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            line-height: 1.3;
+            margin-bottom: 25px;
+        }
+
+        .slide h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .slide p {
+            font-size: 1.4em;
+            line-height: 1.8;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .highlight-red {
+            color: #E31E24;
+        }
+
+        .highlight-blue {
+            color: #7eb3d6;
+        }
+
+        .highlight-lavender {
+            color: #B49DD6;
+        }
+
+        .highlight-purple {
+            color: #B49DD6;
+        }
+
+        /* DECORATIVE ELEMENTS */
+        .line-accent {
+            width: 150px;
+            height: 4px;
+            background: #E31E24;
+            margin: 20px auto;
+        }
+
+        .star-accent {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #E31E24 0%, #E31E24 100%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin: 0 auto 30px;
+        }
+
+        /* SPECIFIC SLIDE STYLES */
+        
+        /* PORTADA */
+        .slide-portada {
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 50%, #1e2d3d 100%);
+            color: white;
+        }
+
+        /* ACTO I */
+        .slide-acto1-1 {
+            background: linear-gradient(135deg, #2a3d4f 0%, #4a2d5f 100%);
+            color: white;
+        }
+
+        .slide-acto1-2 {
+            background: linear-gradient(135deg, #1e2d3d 0%, #3d2a4f 100%);
+            color: white;
+        }
+
+        .slide-acto1-3 {
+            background: linear-gradient(to bottom, #1e2d3d 0%, #7b5ba8 100%);
+            color: white;
+        }
+
+        /* ACTO II */
+        .slide-acto2-1 {
+            background: linear-gradient(135deg, #8b7ba8 0%, #6a5a8f 100%);
+            color: white;
+        }
+
+        .slide-acto2-2 {
+            background: linear-gradient(135deg, #2a3d4f 0%, #7b5ba8 100%);
+            color: white;
+        }
+
+        /* ACTO III */
+        .slide-acto3 {
+            background: linear-gradient(135deg, #1e2d3d 0%, #3d2a4f 100%);
+            color: white;
+        }
+
+        .dimensions-table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .dimensions-table th,
+        .dimensions-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid #8b7ba8;
+        }
+
+        .dimensions-table th {
+            background: rgba(139, 123, 168, 0.2);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            color: #B49DD6;
+        }
+
+        .dimensions-table td {
+            background: rgba(30, 45, 61, 0.6);
+            font-size: 1.1em;
+        }
+
+        .dimensions-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .slide-acto3-2 {
+            background: linear-gradient(135deg, #6a5a8f 0%, #1e2d3d 100%);
+            color: white;
+        }
+
+        .freedom-list {
+            text-align: left;
+            max-width: 850px;
+            margin: 40px auto;
+        }
+
+        .freedom-list p {
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+            text-align: left;
+        }
+
+        .freedom-list p::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #E31E24;
+            font-weight: 700;
+            font-size: 1.4em;
+        }
+
+        .highlight-purple {
+            color: #B49DD6;
+        }
+
+        /* ACTO IV */
+        .slide-acto4-1 {
+            background: linear-gradient(135deg, #E31E24 0%, #a01519 100%);
+            color: white;
+        }
+
+        .slide-acto4-2 {
+            background: linear-gradient(135deg, #1e2d3d 0%, #3d2a4f 100%);
+            color: white;
+        }
+
+        .slide-acto4-3 {
+            background: linear-gradient(to right, #2a3d4f 0%, #7b5ba8 100%);
+            color: white;
+        }
+
+        .quote-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid #E31E24;
+            padding: 30px 40px;
+            margin: 30px auto;
+            max-width: 800px;
+            font-style: italic;
+            font-size: 1.5em;
+            line-height: 1.6;
+        }
+
+        /* ACTO V */
+        .slide-acto5 {
+            background: linear-gradient(135deg, #7b5ba8 0%, #6a5a8f 50%, #1e2d3d 100%);
+            color: white;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 50px auto;
+            max-width: 1100px;
+        }
+
+        .step-card {
+            background: rgba(30, 45, 61, 0.8);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border-top: 5px solid #E31E24;
+            text-align: center;
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #B49DD6;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .step-desc {
+            font-size: 1.1em;
+            color: #d4c9e5;
+            line-height: 1.6;
+        }
+
+        /* ACTO VI */
+        .slide-acto6-1 {
+            background: linear-gradient(135deg, #1e2d3d 0%, #7b5ba8 100%);
+            color: white;
+        }
+
+        .slide-acto6-2 {
+            background: linear-gradient(135deg, #2a3d4f 0%, #1e2d3d 100%);
+            color: white;
+        }
+
+        .slide-final {
+            background: linear-gradient(135deg, #E31E24 0%, #a01519 50%, #1e2d3d 100%);
+            color: white;
+        }
+
+        .mantra {
+            font-size: 2em;
+            font-style: italic;
+            color: #7eb3d6;
+            margin-top: 40px;
+            font-weight: 300;
+        }
+
+        .closing-statement {
+            font-size: 1.8em;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-top: 60px;
+        }
+
+        /* TECHNICAL ELEMENTS */
+        .slide-technical {
+            background: linear-gradient(135deg, #6a5a8f 0%, #1e2d3d 100%);
+            color: white;
+        }
+
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1100px;
+        }
+
+        .technical-card {
+            background: rgba(30, 45, 61, 0.8);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #B49DD6;
+        }
+
+        .technical-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: #B49DD6;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .technical-card p {
+            font-size: 1em;
+            text-align: left;
+            color: #d4c9e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container" id="slidesContainer">
+        
+        <!-- SLIDE 1: PORTADA -->
+        <div class="slide slide-portada">
+            <div class="star-accent"></div>
+            <h1>LA ESTRATEGIA DE LA<br><span class="highlight-red">RAREZA</span></h1>
+            <div class="line-accent"></div>
+            <p style="font-size: 1.8em; color: #7eb3d6; margin-top: 30px;">
+                Tu diferenciación más poderosa
+            </p>
+            <p class="mantra" style="margin-top: 60px;">
+                "Primero excavamos. Luego diferenciamos."
+            </p>
+            <div style="margin-top: 80px; background: #2a3d4f; padding: 15px 40px; border-radius: 8px; display: inline-block;">
+                <p style="font-size: 1.8em; color: white; font-family: 'Montserrat', sans-serif; font-weight: 400; letter-spacing: 0.1em; margin: 0;">
+                    LA ESTR<span style="color: #E31E24;">A</span>TEGA<span style="font-size: 0.7em; vertical-align: super;">™</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: ACTO I - Parte 1 -->
+        <div class="slide slide-acto1-1">
+            <h2><span class="highlight-purple">ACTO I</span></h2>
+            <h1>EL ANCLAJE<br><span class="highlight-red">EMOCIONAL</span></h1>
+            <div class="line-accent"></div>
+            <p style="margin-top: 40px; font-size: 1.5em; color: #d4c9e5;">
+                Imagina por un momento que estás en una galería de arte
+            </p>
+        </div>
+
+        <!-- SLIDE 3: ACTO I - Parte 2 -->
+        <div class="slide slide-acto1-2">
+            <p style="font-size: 1.7em; line-height: 2; max-width: 950px;">
+                Frente a ti hay una pared blanca llena de cuadros.<br>
+                Todos hermosos… técnicamente correctos…<br>
+                <span class="highlight-purple">Pero algo extraño ocurre:</span><br>
+                <span style="font-size: 1.3em; color: #B49DD6;">todos se parecen.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 4: ACTO I - Parte 3 -->
+        <div class="slide slide-acto1-3">
+            <p style="font-size: 1.8em; line-height: 2; max-width: 900px;">
+                En una esquina, <span class="highlight-red">un cuadro distinto.</span>
+            </p>
+            <p style="font-size: 1.5em; margin-top: 50px; line-height: 2; max-width: 900px;">
+                El trazo es imperfecto, los colores no combinan…<br>
+                Pero hay algo en él que te detiene.<br><br>
+                <span class="highlight-purple">No sabes si te gusta o no…</span><br>
+                <span style="font-size: 1.4em;">pero no puedes dejar de mirarlo.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 5: ACTO I - Parte 4 -->
+        <div class="slide slide-acto1-2">
+            <div class="star-accent"></div>
+            <p style="font-size: 2em; line-height: 2;">
+                <span class="highlight-red">Esa pintura no compite.</span><br>
+                Esa pintura no pide atención.<br>
+                <span class="highlight-purple">Esa pintura se la gana…</span><br><br>
+                <span style="font-size: 1.3em;">porque tiene alma.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 6: ACTO I - Cierre -->
+        <div class="slide slide-acto1-1">
+            <h2 style="color: #7eb3d6; margin-bottom: 40px;">Hoy quiero hablarte de eso.</h2>
+            <p style="font-size: 1.7em; line-height: 2;">
+                De cómo dejar de ser un cuadro más<br>
+                en la pared del mercado…
+            </p>
+            <div class="line-accent" style="margin: 50px auto;"></div>
+            <p style="font-size: 2em; color: #E31E24; font-weight: 600;">
+                Y convertirte en una obra<br>que nadie pueda olvidar
+            </p>
+        </div>
+
+        <!-- SLIDE 7: Presentación Estrategia -->
+        <div class="slide slide-acto1-3">
+            <div class="star-accent"></div>
+            <h1 style="font-size: 5em;">LA ESTRATEGIA<br>DE LA <span class="highlight-red">RAREZA</span>™</h1>
+            <div class="line-accent"></div>
+        </div>
+
+        <!-- SLIDE 8: ACTO II - Parte 1 -->
+        <div class="slide slide-acto2-1">
+            <h2><span style="color: #1e2d3d;">ACTO II</span></h2>
+            <h1 style="color: #1e2d3d;">EL POR QUÉ</h1>
+            <div class="line-accent" style="background: #1e2d3d;"></div>
+            <p style="color: #1e2d3d; margin-top: 40px; font-size: 1.4em;">
+                Propósito y Confrontación
+            </p>
+        </div>
+
+        <!-- SLIDE 9: ACTO II - Parte 2 -->
+        <div class="slide slide-acto2-2">
+            <p style="font-size: 1.8em; line-height: 2;">
+                Vivimos en una era donde todos quieren<br>
+                <span class="highlight-purple">"diferenciarse"…</span>
+            </p>
+            <p style="font-size: 2.2em; margin-top: 60px; color: #E31E24; font-weight: 600;">
+                Pero pocos se atreven<br>a excavarse.
+            </p>
+        </div>
+
+        <!-- SLIDE 10: ACTO II - Parte 3 -->
+        <div class="slide slide-acto2-1">
+            <p style="font-size: 1.6em; line-height: 2.2; color: #1e2d3d; max-width: 1000px;">
+                El mercado está lleno de voces que suenan igual,<br>
+                de profesionales que confunden<br>
+                <span style="font-weight: 700;">visibilidad con propósito,</span><br>
+                de marcas que brillan…<br>
+                <span style="font-size: 1.4em; font-weight: 700;">pero no iluminan.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 11: ACTO II - Definición -->
+        <div class="slide slide-acto2-2">
+            <div class="star-accent"></div>
+            <h2 style="color: #B49DD6; margin-bottom: 30px;">Y sin embargo,</h2>
+            <p style="font-size: 1.7em; line-height: 2;">
+                La verdadera diferenciación<br>
+                no está en la estrategia.
+            </p>
+            <p style="font-size: 2.5em; margin-top: 60px; color: #E31E24; font-weight: 600;">
+                Está en la RAREZA.
+            </p>
+        </div>
+
+        <!-- SLIDE 12: ACTO II - Tu Rareza -->
+        <div class="slide slide-acto1-1">
+            <h2 style="font-size: 2.5em; color: #B49DD6; margin-bottom: 50px;">Tu rareza es</h2>
+            <p style="font-size: 1.8em; line-height: 2; max-width: 1000px;">
+                Ese punto en el que se cruzan<br>
+                <span class="highlight-red">tus cicatrices,</span><br>
+                <span class="highlight-purple">tus talentos</span><br>
+                y <span style="color: #d4c9e5;">tus obsesiones.</span>
+            </p>
+            <div class="line-accent" style="margin: 50px auto;"></div>
+            <p style="font-size: 1.4em; color: #d4c9e5;">
+                Es lo que te hace reconocible<br>incluso cuando no estás presente.
+            </p>
+        </div>
+
+        <!-- SLIDE 13: ACTO II - Trascendencia -->
+        <div class="slide slide-acto2-2">
+            <p style="font-size: 1.9em; line-height: 2.2;">
+                Y cuando logras alinear esa rareza<br>
+                con una <span class="highlight-purple">dirección clara,</span>
+            </p>
+            <p style="font-size: 2.3em; margin-top: 70px; color: #E31E24; font-weight: 600; line-height: 1.5;">
+                No solo te diferencias…<br>
+                <span style="font-size: 1.3em;">te trasciendes.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 14: ACTO III - Introducción -->
+        <div class="slide slide-acto3">
+            <h2><span class="highlight-purple">ACTO III</span></h2>
+            <h1>EL <span class="highlight-red">MARCO</span></h1>
+            <div class="line-accent"></div>
+            <p style="margin-top: 40px; font-size: 1.5em; color: #d4c9e5;">
+                Estructura Cognitiva
+            </p>
+        </div>
+
+        <!-- SLIDE 15: ACTO III - Las 6 Dimensiones -->
+        <div class="slide slide-acto3">
+            <h2 style="color: #B49DD6; margin-bottom: 40px;">Las Seis Dimensiones de la</h2>
+            <h1 style="font-size: 3.5em;"><span class="highlight-red">RAREZA</span> ESTRATÉGICA™</h1>
+            <div class="line-accent"></div>
+        </div>
+
+        <!-- SLIDE 16: ACTO III - Tabla -->
+        <div class="slide slide-acto3">
+            <table class="dimensions-table">
+                <thead>
+                    <tr>
+                        <th>DIMENSIÓN</th>
+                        <th>PREGUNTA ESENCIAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight-red" style="font-weight: 700; font-size: 1.2em;">Proceso</span></td>
+                        <td>¿Cómo haces lo que haces que nadie más puede replicar?</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight-purple" style="font-weight: 700; font-size: 1.2em;">Criterio</span></td>
+                        <td>¿Qué valoras que otros ignoran?</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight-red" style="font-weight: 700; font-size: 1.2em;">Combinación</span></td>
+                        <td>¿Qué saberes mezclas naturalmente?</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight-purple" style="font-weight: 700; font-size: 1.2em;">Postura</span></td>
+                        <td>¿Qué creencia desafías en tu industria?</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight-red" style="font-weight: 700; font-size: 1.2em;">Obsesión</span></td>
+                        <td>¿Qué detalle cuidas más de lo necesario?</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight-lavender" style="font-weight: 700; font-size: 1.2em;">Urgencia™</span></td>
+                        <td>¿Cómo conviertes tu autenticidad en momentum sin perder propósito?</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SLIDE 17: ACTO III - Libertad Estratégica -->
+        <div class="slide slide-acto3-2">
+            <div class="freedom-list">
+                <p>Cuando descubres tu <span class="highlight-red">proceso</span>, dejas de compararte.</p>
+                <p>Cuando defines tu <span class="highlight-purple">criterio</span>, dejas de justificarte.</p>
+                <p>Cuando integras tu <span class="highlight-red">combinación</span>, dejas de copiar.</p>
+                <p>Cuando afirmas tu <span class="highlight-purple">postura</span>, dejas de agradar.</p>
+                <p>Cuando aceptas tu <span class="highlight-red">obsesión</span>, dejas de pedir permiso.</p>
+                <p>Y cuando alineas tu <span class="highlight-lavender">urgencia</span>, dejas de reaccionar.</p>
+            </div>
+            <div class="line-accent" style="margin: 60px auto;"></div>
+            <p style="font-size: 2.5em; color: #7eb3d6; font-weight: 300; font-style: italic;">
+                Eso es libertad estratégica.
+            </p>
+        </div>
+
+        <!-- SLIDE 18: ACTO III - La Urgencia como Capa Transversal -->
+        <div class="slide slide-acto3">
+            <div class="star-accent"></div>
+            <h2 style="color: #B49DD6; margin-bottom: 30px;">La Rareza de Urgencia™</h2>
+            <p style="font-size: 1.8em; line-height: 2; max-width: 1000px;">
+                El ritmo con el que conviertes<br>
+                tu autenticidad en <span class="highlight-red">dirección.</span>
+            </p>
+            <div class="line-accent" style="margin: 50px auto;"></div>
+            <p style="font-size: 1.4em; line-height: 2; max-width: 950px; color: #B49DD6;">
+                No se trata de hacer más.<br>
+                Se trata de <span class="highlight-blue">actuar con propósito.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 19: ACTO III - Urgencia vs Reacción -->
+        <div class="slide slide-acto3-2">
+            <p style="font-size: 1.9em; line-height: 2.2; max-width: 1000px;">
+                Cuando la urgencia está alineada,<br>
+                se convierte en <span class="highlight-blue">momentum.</span>
+            </p>
+            <p style="font-size: 1.5em; margin-top: 50px; color: #B49DD6; line-height: 2;">
+                Decisiones rápidas basadas en criterio.
+            </p>
+            <div class="line-accent" style="margin: 60px auto; background: #B49DD6;"></div>
+            <p style="font-size: 1.9em; line-height: 2.2; max-width: 1000px;">
+                Cuando está desalineada,<br>
+                se convierte en <span class="highlight-red">reacción.</span>
+            </p>
+            <p style="font-size: 1.5em; margin-top: 30px; line-height: 2;">
+                Velocidad sin propósito.
+            </p>
+        </div>
+
+        <!-- SLIDE 20: ACTO III - La Verdad sobre la Urgencia -->
+        <div class="slide slide-acto3">
+            <div class="quote-box" style="border-color: #B49DD6; background: rgba(180, 157, 214, 0.1);">
+                <p style="font-size: 2.2em; color: white; text-align: center; line-height: 1.8;">
+                    "La urgencia no es mala.<br>
+                    <span style="color: #E31E24;">Lo urgente sin propósito, sí.</span>"
+                </p>
+                <p style="margin-top: 30px; font-size: 1.2em; color: #B49DD6; text-align: right;">
+                    — La Estratega™
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 27: ACTO IV - Introducción -->
+        <div class="slide slide-acto4-1">
+            <h2 style="color: white;">ACTO IV</h2>
+            <h1>LA <span style="color: #1e2d3d;">HISTORIA</span></h1>
+            <div class="line-accent" style="background: white;"></div>
+            <p style="margin-top: 40px; font-size: 1.5em; color: white;">
+                Storytelling Transformacional
+            </p>
+        </div>
+
+        <!-- SLIDE 28: ACTO IV - Historia Parte 1 -->
+        <div class="slide slide-acto4-2">
+            <p style="font-size: 1.7em; line-height: 2; max-width: 950px;">
+                Hace unos años trabajé con un empresario.<br>
+                Un hombre talentoso, trabajador…
+            </p>
+            <p style="font-size: 2em; margin-top: 60px; color: #E31E24; font-weight: 600;">
+                Pero atrapado en una frase:<br>
+                <span style="font-size: 1.4em;">"Soy uno más."</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 26: ACTO IV - La Pregunta -->
+        <div class="slide slide-acto4-3">
+            <div class="star-accent"></div>
+            <p style="font-size: 1.9em; color: #1e2d3d; margin-bottom: 60px;">
+                Un día le pregunté:
+            </p>
+            <div class="quote-box" style="border-color: #1e2d3d;">
+                <p style="font-size: 2.5em; color: white; text-align: center;">
+                    "¿Cuál es tu <span style="color: #E31E24;">diferencia</span>?"
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 27: ACTO IV - PowerPoint Perfecto -->
+        <div class="slide slide-acto4-2">
+            <p style="font-size: 1.7em; line-height: 2;">
+                Me mostró un PowerPoint perfecto.
+            </p>
+            <p style="font-size: 1.5em; margin-top: 50px; color: #7eb3d6; line-height: 2;">
+                Le respondí:
+            </p>
+            <div class="quote-box">
+                <p style="text-align: center; font-size: 1.3em;">
+                    "No te voy a preguntar por tu negocio.<br>
+                    Te voy a preguntar por qué <span class="highlight-red">tú</span> haces lo que haces."
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 28: ACTO IV - La Revelación -->
+        <div class="slide slide-acto4-1">
+            <p style="font-size: 1.6em; margin-bottom: 50px;">Y entonces me dijo:</p>
+            <div class="quote-box" style="border-color: white; background: rgba(30, 45, 61, 0.8);">
+                <p style="text-align: left; font-size: 1.4em; line-height: 2; color: white;">
+                    "Porque cuando era niño, vi cómo mi padre<br>
+                    perdió su empresa por no tener dirección.<br><br>
+                    Y juré que nadie más perdería su sueño<br>
+                    por falta de estrategia."
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 26: ACTO IV - La Comprensión -->
+        <div class="slide slide-acto4-3">
+            <p style="font-size: 1.8em; line-height: 2; max-width: 1000px; color: white;">
+                Ese día comprendió que<br>
+                <span style="color: #E31E24; font-weight: 600;">su rareza no estaba en su producto,</span><br>
+                sino en su historia.
+            </p>
+        </div>
+
+        <!-- SLIDE 27: ACTO IV - La Transformación -->
+        <div class="slide slide-acto4-2">
+            <p style="font-size: 1.7em; line-height: 2.2;">
+                Y cuando estructuró esa historia…
+            </p>
+            <p style="font-size: 1.9em; margin-top: 60px; color: #7eb3d6; line-height: 2;">
+                Su empresa dejó de vender servicios,<br>
+                <span style="font-size: 1.3em; color: #E31E24; font-weight: 600;">
+                    y empezó a inspirar movimiento.
+                </span>
+            </p>
+        </div>
+
+        <!-- SLIDE 28: ACTO IV - Cierre -->
+        <div class="slide slide-acto4-1">
+            <div class="star-accent" style="background: white;"></div>
+            <p style="font-size: 3em; font-weight: 600; line-height: 1.6;">
+                Eso… es la<br>
+                Estrategia de la <span style="color: #7eb3d6;">Rareza</span>™
+            </p>
+        </div>
+
+        <!-- SLIDE 29: ACTO V - Introducción -->
+        <div class="slide slide-acto5">
+            <h2 style="color: #1e2d3d;">ACTO V</h2>
+            <h1 style="color: #1e2d3d;">EL ANCLAJE<br>DE <span class="highlight-red">ACCIÓN</span></h1>
+            <div class="line-accent" style="background: #1e2d3d;"></div>
+            <p style="margin-top: 40px; font-size: 1.5em; color: #1e2d3d;">
+                Aplicación Práctica
+            </p>
+        </div>
+
+        <!-- SLIDE 30: ACTO V - El Mapa Personal -->
+        <div class="slide slide-acto5">
+            <h2 style="color: white; margin-bottom: 50px; font-size: 2.5em;">Tu Mapa Personal</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Excava</div>
+                    <div class="step-desc">Descubre quién eres sin máscaras</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Diferencia</div>
+                    <div class="step-desc">Estructura lo que te hace único</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Encadena</div>
+                    <div class="step-desc">Comunícalo con propósito</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 31: ACTO V - Verdad -->
+        <div class="slide slide-acto5">
+            <p style="font-size: 2em; line-height: 2; color: white;">
+                No puedes construir estrategia<br>
+                sobre <span class="highlight-red">confusión.</span>
+            </p>
+            <div class="line-accent" style="margin: 60px auto;"></div>
+            <p style="font-size: 2.2em; color: #1e2d3d; font-weight: 600; line-height: 1.8;">
+                Tu diferenciación solo será<br>
+                tan valiente como<br>
+                tu autoconocimiento.
+            </p>
+        </div>
+
+        <!-- SLIDE 35: ACTO VI - Introducción -->
+        <div class="slide slide-acto6-1">
+            <h2><span style="color: #1e2d3d;">ACTO VI</span></h2>
+            <h1 style="color: #1e2d3d;">EL <span class="highlight-red">CIERRE</span></h1>
+            <div class="line-accent" style="background: #1e2d3d;"></div>
+            <p style="margin-top: 40px; font-size: 1.5em; color: #1e2d3d;">
+                Reactivación del Anclaje
+            </p>
+        </div>
+
+        <!-- SLIDE 36: ACTO VI - Regreso -->
+        <div class="slide slide-acto6-2">
+            <p style="font-size: 1.8em; line-height: 2; max-width: 950px;">
+                Quiero que vuelvas a imaginar<br>
+                aquel cuadro distinto…
+            </p>
+            <p style="font-size: 1.6em; margin-top: 50px; color: #7eb3d6; line-height: 2;">
+                Ese que no competía,<br>
+                pero <span class="highlight-red">no podía ser ignorado.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 34: ACTO VI - Eres Tú -->
+        <div class="slide slide-acto6-1">
+            <div class="star-accent" style="background: #E31E24;"></div>
+            <p style="font-size: 2.5em; color: #1e2d3d; font-weight: 600;">
+                Ahora imagina que<br>
+                ese cuadro eres <span class="highlight-red">TÚ.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 35: ACTO VI - No Perfecto -->
+        <div class="slide slide-acto6-2">
+            <p style="font-size: 2.8em; line-height: 2; font-weight: 300;">
+                No perfecto.<br>
+                No igual.<br>
+                <span style="color: #7eb3d6; font-weight: 600;">Pero real.</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 36: ACTO VI - Tu Rareza -->
+        <div class="slide slide-final">
+            <p style="font-size: 2em; line-height: 2.2; max-width: 1000px;">
+                Tu rareza no es un error.<br>
+                <span style="color: #7eb3d6; font-size: 1.3em; font-weight: 600;">
+                    Tu rareza es tu estrategia.
+                </span>
+            </p>
+            <div class="line-accent" style="margin: 60px auto; background: white;"></div>
+            <p style="font-size: 1.8em; line-height: 2;">
+                Y cuando la sostienes con coherencia,<br>
+                ya no necesitas gritar.<br>
+                <span style="font-size: 1.5em; color: #7eb3d6; font-weight: 600;">
+                    Solo existir con verdad.
+                </span>
+            </p>
+        </div>
+
+        <!-- SLIDE 34: CIERRE FINAL -->
+        <div class="slide slide-portada">
+            <div class="star-accent"></div>
+            <h1 style="font-size: 4.5em;">LA ESTRATEGIA<br>DE LA <span class="highlight-red">RAREZA</span>™</h1>
+            <div class="line-accent"></div>
+            <p style="font-size: 2em; color: #7eb3d6; margin-top: 60px; font-style: italic;">
+                "Primero excavamos.<br>Luego diferenciamos."
+            </p>
+            <div style="margin-top: 100px; background: #2a3d4f; padding: 15px 40px; border-radius: 8px; display: inline-block;">
+                <p style="font-size: 1.8em; color: white; font-family: 'Montserrat', sans-serif; font-weight: 400; letter-spacing: 0.1em; margin: 0;">
+                    LA ESTR<span style="color: #E31E24;">A</span>TEGA<span style="font-size: 0.7em; vertical-align: super;">™</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 35: ELEMENTOS TÉCNICOS -->
+        <div class="slide slide-technical">
+            <h2 style="color: #7eb3d6; margin-bottom: 30px;">ELEMENTOS TÉCNICOS ESCÉNICOS</h2>
+            <div class="technical-grid">
+                <div class="technical-card">
+                    <h4>Pausa Intencionada</h4>
+                    <p>3 segundos tras cada afirmación poderosa</p>
+                </div>
+                <div class="technical-card">
+                    <h4>Contacto Visual</h4>
+                    <p>3 puntos del público (izquierda, centro, derecha)</p>
+                </div>
+                <div class="technical-card">
+                    <h4>Lenguaje Corporal</h4>
+                    <p>Brazos abiertos al explicar, mano al corazón al anclar</p>
+                </div>
+                <div class="technical-card">
+                    <h4>Cambio de Ritmo</h4>
+                    <p>Alterna entre tono narrativo y reflexivo</p>
+                </div>
+                <div class="technical-card">
+                    <h4>Silencio Emocional</h4>
+                    <p>Tras frases clave, deja respirar el mensaje</p>
+                </div>
+                <div class="technical-card">
+                    <h4>Anclaje PNL</h4>
+                    <p>Gesto repetido (mano al corazón) al inicio y cierre</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION CONTROLS -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="previousSlide()">← ANTERIOR</button>
+        <button class="nav-btn" onclick="nextSlide()">SIGUIENTE →</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">35</span>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slidesContainer = document.getElementById('slidesContainer');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+
+        // Initialize
+        totalSlidesSpan.textContent = totalSlides;
+
+        function updateSlidePosition() {
+            slidesContainer.style.transform = `translateX(-${currentSlideIndex * 100}vw)`;
+            currentSlideSpan.textContent = currentSlideIndex + 1;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                updateSlidePosition();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlidePosition();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                previousSlide();
+            } else if (event.key === 'Home') {
+                event.preventDefault();
+                currentSlideIndex = 0;
+                updateSlidePosition();
+            } else if (event.key === 'End') {
+                event.preventDefault();
+                currentSlideIndex = totalSlides - 1;
+                updateSlidePosition();
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousSlide();
+            }
+        }
+
+        // Click navigation
+        document.addEventListener('click', function(event) {
+            // Skip if clicking on nav buttons
+            if (event.target.classList.contains('nav-btn')) return;
+            
+            const clickX = event.clientX;
+            const windowWidth = window.innerWidth;
+            
+            if (clickX > windowWidth * 0.6) {
+                nextSlide();
+            } else if (clickX < windowWidth * 0.4) {
+                previousSlide();
+            }
+        });
+    </script>
+</body>
+</html>

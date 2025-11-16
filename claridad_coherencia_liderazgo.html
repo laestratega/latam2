@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liderazgo Consciente y Coherencia | LA ESTRATEGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* NAVIGATION */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(30, 45, 61, 0.9);
+            color: white;
+            border: 2px solid #7eb3d6;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-btn:hover {
+            background: #7eb3d6;
+            transform: translateY(-2px);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            background: rgba(30, 45, 61, 0.9);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #7eb3d6;
+            z-index: 1000;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            line-height: 1.3;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .highlight-red { color: #E31E24; }
+        .highlight-blue { color: #7eb3d6; }
+        .highlight-purple { color: #B49DD6; }
+
+        /* DECORATIVE */
+        .line-accent {
+            width: 150px;
+            height: 4px;
+            background: #E31E24;
+            margin: 20px auto;
+        }
+
+        .star-accent {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #E31E24 0%, #E31E24 100%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin: 0 auto 30px;
+        }
+
+        /* SLIDE BACKGROUNDS */
+        .slide-dark {
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            color: white;
+        }
+
+        .slide-blue {
+            background: linear-gradient(135deg, #7eb3d6 0%, #5a9bbf 100%);
+            color: white;
+        }
+
+        .slide-red {
+            background: linear-gradient(135deg, #E31E24 0%, #a01519 100%);
+            color: white;
+        }
+
+        .slide-purple {
+            background: linear-gradient(135deg, #B49DD6 0%, #9681c4 100%);
+            color: white;
+        }
+
+        .slide-navy-blue {
+            background: linear-gradient(135deg, #1e2d3d 0%, #7eb3d6 100%);
+            color: white;
+        }
+
+        .slide-mixed {
+            background: linear-gradient(135deg, #2a3d4f 0%, #1e2d3d 50%, #2a3d4f 100%);
+            color: white;
+        }
+
+        /* CONTENT BOXES */
+        .content-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #E31E24;
+            margin: 20px auto;
+            max-width: 900px;
+            text-align: left;
+        }
+
+        .content-box h3 {
+            color: #E31E24;
+            margin-bottom: 15px;
+        }
+
+        .content-box p {
+            font-size: 1.2em;
+            text-align: left;
+        }
+
+        /* NUMBERED SECTIONS */
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 8em;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        /* LISTS */
+        .key-points {
+            text-align: left;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .key-points li {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .key-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #E31E24;
+            font-weight: 700;
+            font-size: 1.4em;
+        }
+
+        /* QUOTE BOX */
+        .quote-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid #E31E24;
+            padding: 30px 40px;
+            margin: 40px auto;
+            max-width: 900px;
+            font-style: italic;
+            font-size: 1.5em;
+            line-height: 1.8;
+        }
+
+        /* GRID */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .grid-card {
+            background: rgba(30, 45, 61, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid #7eb3d6;
+        }
+
+        .grid-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: #7eb3d6;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .grid-card p {
+            font-size: 1.1em;
+            text-align: left;
+        }
+
+        /* CYCLE STEPS */
+        .cycle-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .cycle-step {
+            background: rgba(30, 45, 61, 0.8);
+            padding: 35px 25px;
+            border-radius: 12px;
+            border-top: 5px solid #E31E24;
+            text-align: center;
+        }
+
+        .cycle-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #7eb3d6;
+            margin-bottom: 15px;
+        }
+
+        .cycle-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .cycle-desc {
+            font-size: 1em;
+            color: #B49DD6;
+            line-height: 1.6;
+        }
+
+        /* TOOLS LIST */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .tool-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #B49DD6;
+            text-align: left;
+        }
+
+        .tool-item h4 {
+            color: #B49DD6;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .tool-item p {
+            font-size: 1em;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container" id="slidesContainer">
+        
+        <!-- SLIDE 1: PORTADA -->
+        <div class="slide slide-dark">
+            <div class="star-accent"></div>
+            <h1 style="text-align: center; max-width: 1000px;">
+                CÓMO SOSTENER<br>
+                <span class="highlight-blue">CLARIDAD</span>,<br>
+                LIDERAZGO <span class="highlight-purple">CONSCIENTE</span><br>
+                Y <span class="highlight-red">COHERENCIA</span>
+            </h1>
+            <div class="line-accent"></div>
+            <p style="font-size: 1.5em; color: #7eb3d6; margin-top: 40px;">
+                Entre Visión Personal y Dirección Empresarial
+            </p>
+            <div style="margin-top: 60px; background: #2a3d4f; padding: 15px 40px; border-radius: 8px; display: inline-block;">
+                <p style="font-size: 1.5em; color: white; font-family: 'Montserrat', sans-serif; font-weight: 400; letter-spacing: 0.1em; margin: 0;">
+                    LA ESTR<span style="color: #E31E24;">A</span>TEGA<span style="font-size: 0.7em; vertical-align: super;">™</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: PREMISA -->
+        <div class="slide slide-red">
+            <div class="quote-box" style="border-left-color: white;">
+                <p style="font-size: 2em; color: white; text-align: center;">
+                    "La empresa crece al ritmo<br>
+                    de la conciencia del líder."
+                </p>
+                <p style="text-align: right; margin-top: 30px; font-size: 0.8em; color: white;">
+                    — La Estratega™
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: INTRODUCCIÓN -->
+        <div class="slide slide-dark">
+            <h2 style="color: #7eb3d6; margin-bottom: 40px;">La Verdad Incómoda</h2>
+            <p style="font-size: 1.7em; line-height: 2;">
+                Sostener claridad y coherencia en medio del caos diario<br>
+                —más aún en una empresa familiar—
+            </p>
+            <p style="font-size: 1.9em; margin-top: 40px; color: #B49DD6;">
+                Es un arte que mezcla gestión estratégica,<br>
+                madurez emocional y autoconocimiento profundo.
+            </p>
+            <div class="line-accent" style="margin-top: 60px;"></div>
+            <p style="font-size: 2em; margin-top: 40px; color: #E31E24; font-weight: 600;">
+                La mayoría de líderes no carece de talento.<br>
+                Carece de orden interno.
+            </p>
+        </div>
+
+        <!-- SLIDE 4: SECCIÓN 1 INTRO -->
+        <div class="slide slide-blue">
+            <div class="section-number" style="color: rgba(30, 45, 61, 0.2);">1</div>
+            <h1 style="color: #1e2d3d; font-size: 5em;">CLARIDAD</h1>
+            <div class="line-accent" style="background: #1e2d3d;"></div>
+            <p style="color: #1e2d3d; font-size: 1.8em; margin-top: 30px;">
+                El ancla del líder
+            </p>
+        </div>
+
+        <!-- SLIDE 5: CLARIDAD - Concepto -->
+        <div class="slide slide-dark">
+            <div class="quote-box">
+                <p style="text-align: center; font-size: 1.8em;">
+                    "La claridad no es pensar más.<br>
+                    <span class="highlight-blue">Es pensar mejor.</span>"
+                </p>
+            </div>
+            <p style="margin-top: 50px; font-size: 1.5em;">
+                La claridad se sostiene cuando el líder practica<br>
+                <span class="highlight-red">tres acciones esenciales</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 6: CLARIDAD 1.1 -->
+        <div class="slide slide-mixed">
+            <h2><span class="highlight-blue">1.1</span> Introspección Estructurada</h2>
+            <p style="margin-top: 30px; font-size: 1.5em;">
+                No basta con reflexionar.<br>
+                Hay que reflexionar <span class="highlight-red">con método</span>.
+            </p>
+            
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <h4>🔹 Bitácora del Líder Estratégico™</h4>
+                    <p>Registro diario de decisiones y emociones</p>
+                </div>
+                <div class="tool-item">
+                    <h4>🔹 Ritual de Revisión Semanal</h4>
+                    <p>Pausa consciente para evaluar la semana</p>
+                </div>
+                <div class="tool-item">
+                    <h4>🔹 Test de Coherencia Personal™</h4>
+                    <p>Validación entre valores y acciones</p>
+                </div>
+                <div class="tool-item">
+                    <h4>🔹 Pregunta Clave</h4>
+                    <p>"¿Desde qué emoción estoy tomando decisiones esta semana?"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: CLARIDAD 1.2 -->
+        <div class="slide slide-navy-blue">
+            <h2><span class="highlight-purple">1.2</span> Espacios de Silencio</h2>
+            <p style="margin-top: 30px; font-size: 1.5em; max-width: 900px;">
+                La claridad no aparece en medio del ruido operativo.<br>
+                Se <span class="highlight-red">provoca</span> desde la pausa consciente.
+            </p>
+            
+            <ul class="key-points">
+                <li>10 minutos diarios sin estímulos</li>
+                <li>Cierre del día con una pregunta guía</li>
+                <li>Lunes de visión antes de hablar con el equipo</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 8: CLARIDAD 1.3 -->
+        <div class="slide slide-dark">
+            <h2><span class="highlight-blue">1.3</span> Reglas Claras para la Mente</h2>
+            <p style="margin-top: 30px; font-size: 1.5em;">
+                La claridad se pierde cuando<br>
+                las prioridades se mezclan.
+            </p>
+            
+            <div class="grid-2">
+                <div class="grid-card">
+                    <h4>Filtro de Urgencia</h4>
+                    <p>Todo lo urgente pasa por: "¿Esto me corresponde?"</p>
+                </div>
+                <div class="grid-card">
+                    <h4>Límite de Decisiones</h4>
+                    <p>Dos decisiones estratégicas máximas por semana</p>
+                </div>
+            </div>
+            
+            <div class="quote-box" style="margin-top: 40px;">
+                <p style="text-align: center;">
+                    Un <span class="highlight-red">NO</span> consciente<br>
+                    equivale a diez <span class="highlight-blue">SÍ</span> correctos
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: SECCIÓN 2 INTRO -->
+        <div class="slide slide-purple">
+            <div class="section-number" style="color: rgba(30, 45, 61, 0.2);">2</div>
+            <h1 style="color: white; font-size: 5em;">LIDERAZGO<br>CONSCIENTE</h1>
+            <div class="line-accent" style="background: white;"></div>
+            <p style="color: white; font-size: 1.8em; margin-top: 30px;">
+                La práctica interna
+            </p>
+        </div>
+
+        <!-- SLIDE 10: LIDERAZGO - Concepto -->
+        <div class="slide slide-dark">
+            <div class="quote-box">
+                <p style="text-align: center; font-size: 1.8em;">
+                    "Un líder consciente no dirige.<br>
+                    <span class="highlight-purple">Transforma.</span>"
+                </p>
+            </div>
+            <p style="margin-top: 50px; font-size: 1.5em;">
+                El liderazgo consciente no ocurre por deseo.<br>
+                Ocurre por <span class="highlight-red">repetición</span>.
+            </p>
+        </div>
+
+        <!-- SLIDE 11: LIDERAZGO 2.1 -->
+        <div class="slide slide-navy-blue">
+            <h2><span class="highlight-purple">2.1</span> Observar Sin Reaccionar</h2>
+            
+            <div class="quote-box" style="margin-top: 50px; border-left-color: #B49DD6;">
+                <p style="font-size: 1.8em; text-align: center; color: white;">
+                    "¿Estoy reaccionando desde la herida<br>
+                    o respondiendo desde la visión?"
+                </p>
+            </div>
+            
+            <p style="margin-top: 50px; font-size: 1.4em; color: #B49DD6;">
+                Esta pregunta cambia decisiones,<br>
+                conversaciones y relaciones.
+            </p>
+        </div>
+
+        <!-- SLIDE 12: LIDERAZGO 2.2 -->
+        <div class="slide slide-mixed">
+            <h2><span class="highlight-blue">2.2</span> Límites Emocionados,<br>No Emocionales</h2>
+            
+            <p style="margin-top: 30px; font-size: 1.4em; color: #7eb3d6;">
+                Los líderes de empresas familiares suelen confundir:
+            </p>
+            
+            <div class="grid-2" style="margin-top: 40px;">
+                <div class="content-box" style="background: rgba(227, 30, 36, 0.1); border-left-color: #E31E24;">
+                    <h3 style="color: #E31E24;">❌ Lo que NO es</h3>
+                    <p>• Amor con permisividad<br>
+                    • Autoridad con dureza<br>
+                    • Conflicto con ruptura</p>
+                </div>
+                <div class="content-box" style="background: rgba(126, 179, 214, 0.1); border-left-color: #7eb3d6;">
+                    <h3 style="color: #7eb3d6;">✓ Lo que SÍ es</h3>
+                    <p>• Límites claros<br>
+                    • Comunicación honesta<br>
+                    • Autoridad firme pero empática</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: LIDERAZGO 2.3 -->
+        <div class="slide slide-dark">
+            <h2><span class="highlight-purple">2.3</span> Presencia Real,<br>No Presencia Física</h2>
+            
+            <p style="margin-top: 40px; font-size: 1.6em; color: #7eb3d6;">
+                Una reunión con un líder <span class="highlight-purple">presente</span><br>
+                vale más que<br>
+                10 reuniones con un líder <span class="highlight-red">distraído</span>
+            </p>
+            
+            <ul class="key-points" style="margin-top: 60px;">
+                <li>Evita el celular en sesiones clave</li>
+                <li>Evita interrupciones constantes</li>
+                <li>Evita micromanagement disfrazado de ayuda</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 14: SECCIÓN 3 INTRO -->
+        <div class="slide slide-red">
+            <div class="section-number" style="color: rgba(255, 255, 255, 0.1);">3</div>
+            <h1 style="font-size: 4em; text-align: center; max-width: 1000px;">
+                COHERENCIA ENTRE<br>
+                VISIÓN PERSONAL Y<br>
+                DIRECCIÓN EMPRESARIAL
+            </h1>
+            <div class="line-accent" style="background: white;"></div>
+        </div>
+
+        <!-- SLIDE 15: COHERENCIA - Concepto -->
+        <div class="slide slide-dark">
+            <div class="quote-box">
+                <p style="text-align: center; font-size: 1.6em;">
+                    "El mayor desorden de una empresa comienza<br>
+                    el día que el líder empieza a<br>
+                    <span class="highlight-red">traicionarse</span>."
+                </p>
+            </div>
+            
+            <p style="margin-top: 50px; font-size: 1.5em;">
+                La coherencia se sostiene cuando el líder alinea<br>
+                <span class="highlight-blue">cuatro cosas</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 16: COHERENCIA 3.1 -->
+        <div class="slide slide-navy-blue">
+            <h2><span class="highlight-purple">3.1</span> Quién Soy Hoy</h2>
+            
+            <p style="margin-top: 40px; font-size: 1.5em;">
+                No tu pasado. No tu ego.<br>
+                No tu versión antigua.
+            </p>
+            
+            <p style="margin-top: 50px; font-size: 1.7em; color: #7eb3d6;">
+                Sino tu <span class="highlight-red">versión presente</span>:
+            </p>
+            
+            <ul class="key-points" style="margin-top: 40px;">
+                <li>Tus creencias actuales</li>
+                <li>Tus valores reales</li>
+                <li>Tu visión genuina</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 17: COHERENCIA 3.2 -->
+        <div class="slide slide-mixed">
+            <h2><span class="highlight-blue">3.2</span> Qué Quiero Construir</h2>
+            
+            <p style="margin-top: 40px; font-size: 1.6em; color: #E31E24;">
+                La empresa no puede tener<br>
+                más claridad que su dueño.
+            </p>
+            
+            <div class="grid-2" style="margin-top: 50px;">
+                <div class="grid-card">
+                    <h4>Define la Dirección</h4>
+                    <p>¿Hacia dónde vamos realmente?</p>
+                </div>
+                <div class="grid-card">
+                    <h4>Define el Propósito</h4>
+                    <p>¿Para qué existe esta empresa?</p>
+                </div>
+            </div>
+            
+            <div class="content-box" style="margin-top: 40px;">
+                <h3>Define el Estándar</h3>
+                <p>Lo que vas a aceptar vs. no aceptar</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 18: COHERENCIA 3.3 -->
+        <div class="slide slide-dark">
+            <h2><span class="highlight-purple">3.3</span> Qué Necesita<br>la Empresa de Mí</h2>
+            
+            <p style="margin-top: 40px; font-size: 1.5em; color: #7eb3d6;">
+                Aquí se activa el<br>
+                <span class="highlight-red">Mapa de Evolución de Rol™</span>
+            </p>
+            
+            <div class="quote-box" style="margin-top: 60px;">
+                <p style="text-align: center; font-size: 1.7em;">
+                    No todo lo que puedes hacer<br>
+                    es lo que <span class="highlight-blue">debes</span> hacer
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 19: COHERENCIA 3.4 -->
+        <div class="slide slide-red">
+            <h2>3.4 Qué Estoy Dispuesto<br>a Dejar Atrás</h2>
+            
+            <p style="margin-top: 40px; font-size: 1.5em;">
+                La incoherencia nace del <span style="color: #1e2d3d;">apego</span>.
+            </p>
+            
+            <div class="grid-2" style="margin-top: 60px;">
+                <div class="content-box" style="background: rgba(30, 45, 61, 0.8); border-left-color: white;">
+                    <h3 style="color: white;">❌ Cambia Esto</h3>
+                    <p>"Yo siempre he hecho esto así."</p>
+                </div>
+                <div class="content-box" style="background: rgba(30, 45, 61, 0.8); border-left-color: white;">
+                    <h3 style="color: white;">✓ Por Esto</h3>
+                    <p>"¿Qué versión del líder necesita esta etapa?"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 20: SECCIÓN 4 INTRO -->
+        <div class="slide slide-blue">
+            <div class="section-number" style="color: rgba(30, 45, 61, 0.2);">4</div>
+            <h1 style="color: #1e2d3d; font-size: 5em;">SISTEMAS</h1>
+            <div class="line-accent" style="background: #1e2d3d;"></div>
+            <p style="color: #1e2d3d; font-size: 1.8em; margin-top: 30px;">
+                Para sostener la coherencia
+            </p>
+        </div>
+
+        <!-- SLIDE 21: SISTEMAS - Intro -->
+        <div class="slide slide-dark">
+            <p style="font-size: 2em; color: #E31E24; margin-bottom: 50px;">
+                La conciencia sin sistema<br>
+                se diluye.
+            </p>
+            
+            <p style="font-size: 1.6em; color: #7eb3d6;">
+                Por eso necesitas<br>
+                <span class="highlight-purple">estructura</span>
+            </p>
+        </div>
+
+        <!-- SLIDE 22: SISTEMAS 4.1 & 4.2 -->
+        <div class="slide slide-navy-blue">
+            <h2 style="margin-bottom: 50px;">Los 4 Sistemas Esenciales</h2>
+            
+            <div class="grid-2">
+                <div class="content-box" style="background: rgba(30, 45, 61, 0.9); border-left-color: #E31E24;">
+                    <h3>4.1 Sistema de Gobernanza de Marca™</h3>
+                    <p>Para asegurar que cada mensaje, decisión y acción respalde la estrategia</p>
+                </div>
+                
+                <div class="content-box" style="background: rgba(30, 45, 61, 0.9); border-left-color: #7eb3d6;">
+                    <h3>4.2 Mapa de Gobernanza™</h3>
+                    <p>Para evitar decisiones emocionales en la empresa familiar</p>
+                </div>
+                
+                <div class="content-box" style="background: rgba(30, 45, 61, 0.9); border-left-color: #B49DD6;">
+                    <h3>4.3 Plan de Marketing Integral™</h3>
+                    <p>Para que la presencia externa sea reflejo de la claridad interna</p>
+                </div>
+                
+                <div class="content-box" style="background: rgba(30, 45, 61, 0.9); border-left-color: #E31E24;">
+                    <h3>4.4 Reunión Mensual de Reencuadre Estratégico™</h3>
+                    <p>Revisión de visión, coherencia, alineación y liderazgo</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 23: SECCIÓN 5 INTRO -->
+        <div class="slide slide-purple">
+            <div class="section-number" style="color: rgba(255, 255, 255, 0.1);">5</div>
+            <h1 style="font-size: 4em;">EL CICLO DE<br>SOSTENIBILIDAD</h1>
+            <div class="line-accent" style="background: white;"></div>
+            <p style="font-size: 1.8em; margin-top: 30px;">
+                Del Líder Consciente
+            </p>
+        </div>
+
+        <!-- SLIDE 24: CICLO - 4 Pasos -->
+        <div class="slide slide-dark">
+            <h2 style="margin-bottom: 50px; color: #7eb3d6;">Los 4 Pasos del Ciclo</h2>
+            
+            <div class="cycle-container">
+                <div class="cycle-step">
+                    <div class="cycle-number">1</div>
+                    <div class="cycle-title">Observa tu Mente</div>
+                    <div class="cycle-desc">¿Quién está tomando la decisión?</div>
+                </div>
+                
+                <div class="cycle-step">
+                    <div class="cycle-number">2</div>
+                    <div class="cycle-title">Ordena tu Rol</div>
+                    <div class="cycle-desc">¿Qué corresponde que haga yo?</div>
+                </div>
+                
+                <div class="cycle-step">
+                    <div class="cycle-number">3</div>
+                    <div class="cycle-title">Alinea tus Decisiones</div>
+                    <div class="cycle-desc">¿Esto me acerca o me aleja?</div>
+                </div>
+                
+                <div class="cycle-step">
+                    <div class="cycle-number">4</div>
+                    <div class="cycle-title">Evalúa y Ajusta</div>
+                    <div class="cycle-desc">¿Estoy siendo coherente cada mes?</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 25: VERDAD FINAL -->
+        <div class="slide slide-red">
+            <div class="quote-box" style="border-left-color: white;">
+                <p style="font-size: 1.8em; text-align: center; color: white;">
+                    Sostener claridad, conciencia y coherencia<br>
+                    no es un ejercicio de <span style="color: #1e2d3d;">perfección</span>.
+                </p>
+                <p style="font-size: 2.2em; text-align: center; margin-top: 40px; color: white;">
+                    Es un ejercicio de<br>
+                    <span style="color: #1e2d3d; font-weight: 700;">práctica diaria</span>.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 26: CONCLUSIÓN -->
+        <div class="slide slide-dark">
+            <div class="star-accent"></div>
+            
+            <div class="quote-box">
+                <p style="font-size: 1.6em; text-align: center;">
+                    "La empresa crece cuando el líder<br>
+                    deja de adivinar quién es<br>
+                    y comienza a <span class="highlight-blue">recordar</span><br>
+                    quién <span class="highlight-red">eligió</span> ser."
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 27: CIERRE FINAL -->
+        <div class="slide slide-navy-blue">
+            <div class="star-accent"></div>
+            <h1 style="text-align: center; font-size: 3.5em; max-width: 900px;">
+                Primero <span class="highlight-purple">excavamos</span>.<br>
+                Luego <span class="highlight-blue">diferenciamos</span>.<br>
+                Finalmente, lideramos<br>
+                con <span class="highlight-red">conciencia</span>.
+            </h1>
+            <div style="margin-top: 80px; background: #2a3d4f; padding: 15px 40px; border-radius: 8px; display: inline-block;">
+                <p style="font-size: 1.5em; color: white; font-family: 'Montserrat', sans-serif; font-weight: 400; letter-spacing: 0.1em; margin: 0;">
+                    LA ESTR<span style="color: #E31E24;">A</span>TEGA<span style="font-size: 0.7em; vertical-align: super;">™</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="previousSlide()">← ANTERIOR</button>
+        <button class="nav-btn" onclick="nextSlide()">SIGUIENTE →</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">27</span>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slidesContainer = document.getElementById('slidesContainer');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+
+        totalSlidesSpan.textContent = totalSlides;
+
+        function updateSlidePosition() {
+            slidesContainer.style.transform = `translateX(-${currentSlideIndex * 100}vw)`;
+            currentSlideSpan.textContent = currentSlideIndex + 1;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                updateSlidePosition();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlidePosition();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                previousSlide();
+            } else if (event.key === 'Home') {
+                event.preventDefault();
+                currentSlideIndex = 0;
+                updateSlidePosition();
+            } else if (event.key === 'End') {
+                event.preventDefault();
+                currentSlideIndex = totalSlides - 1;
+                updateSlidePosition();
+            }
+        });
+
+        // Touch support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousSlide();
+            }
+        }
+
+        // Click navigation
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('nav-btn')) return;
+            
+            const clickX = event.clientX;
+            const windowWidth = window.innerWidth;
+            
+            if (clickX > windowWidth * 0.6) {
+                nextSlide();
+            } else if (clickX < windowWidth * 0.4) {
+                previousSlide();
+            }
+        });
+    </script>
+</body>
+</html>
