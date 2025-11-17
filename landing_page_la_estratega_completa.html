@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Estratega™ — Creadora de Océanos Azules para PYMEs Latinoamericanas</title>
+    <meta name="description" content="Consultora especializada en estrategias de diferenciación imposibles de copiar. Transformamos PYMEs desde su raíz: liderazgo, identidad y diferenciación estratégica.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f8f9fa;
+            color: #333333;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* HEADER STICKY */
+        .header {
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            padding: 25px 40px;
+            box-shadow: 0 4px 20px rgba(30, 45, 61, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .logo .highlight {
+            color: #E31E24;
+        }
+
+        .tagline {
+            color: #7eb3d6;
+            font-size: 0.85em;
+            font-weight: 300;
+            margin-top: 5px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            color: #ffffff;
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(126, 179, 214, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 35px;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5em;
+            color: #7eb3d6;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .hero .microfrase {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 20px 55px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #E31E24;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #c41a20;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(227, 30, 36, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #7eb3d6;
+            border: 2px solid #7eb3d6;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(126, 179, 214, 0.1);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        /* SECCIONES */
+        .section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background: #ffffff;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            font-weight: 700;
+            color: #1e2d3d;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3em;
+            color: #666666;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 300;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .content-box {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-box p {
+            font-size: 1.15em;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            color: #333333;
+        }
+
+        .content-box strong {
+            color: #E31E24;
+            font-weight: 700;
+        }
+
+        .philosophy-box {
+            background: linear-gradient(135deg, rgba(30, 45, 61, 0.05) 0%, rgba(126, 179, 214, 0.05) 100%);
+            padding: 50px;
+            border-radius: 12px;
+            margin: 50px auto;
+            border-left: 5px solid #E31E24;
+            max-width: 900px;
+        }
+
+        .philosophy-box p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #1e2d3d;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .rejection-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+
+        .rejection-item {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 3px solid #E31E24;
+            font-size: 1.05em;
+            color: #333333;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            color: #ffffff;
+            padding: 50px;
+            border-radius: 12px;
+            margin: 60px auto;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .quote-box p {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #ffffff;
+        }
+
+        /* PILARES */
+        .pilares-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .pilar {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(30, 45, 61, 0.08);
+            border-top: 5px solid #7eb3d6;
+            transition: all 0.3s ease;
+        }
+
+        .pilar:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(30, 45, 61, 0.15);
+        }
+
+        .pilar.destacado {
+            border-top-color: #E31E24;
+        }
+
+        .pilar-numero {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #E31E24;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .pilar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            color: #1e2d3d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .pilar p {
+            color: #666666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        /* CLIENTE IDEAL */
+        .cliente-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            margin: 60px 0;
+        }
+
+        .cliente-box {
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 12px;
+            border-left: 5px solid #7eb3d6;
+        }
+
+        .cliente-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #1e2d3d;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .cliente-box ul {
+            list-style: none;
+        }
+
+        .cliente-box li {
+            padding: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            color: #333333;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        .cliente-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #7eb3d6;
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+
+        .rechazo-box {
+            background: linear-gradient(135deg, rgba(227, 30, 36, 0.05) 0%, rgba(227, 30, 36, 0.02) 100%);
+            border-left-color: #E31E24;
+        }
+
+        .rechazo-box li::before {
+            content: '✗';
+            color: #E31E24;
+        }
+
+        /* PROGRAMAS */
+        .programas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .programa {
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(30, 45, 61, 0.08);
+            border-top: 5px solid #7eb3d6;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .programa:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(30, 45, 61, 0.15);
+        }
+
+        .programa.featured {
+            border-top-color: #E31E24;
+            background: linear-gradient(135deg, rgba(30, 45, 61, 0.02) 0%, rgba(126, 179, 214, 0.02) 100%);
+        }
+
+        .programa-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .programa h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #1e2d3d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .programa p {
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            flex-grow: 1;
+        }
+
+        .programa .incluye {
+            background: rgba(126, 179, 214, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            color: #333333;
+            line-height: 1.7;
+        }
+
+        .programa .dirigido {
+            font-style: italic;
+            color: #7eb3d6;
+            margin-bottom: 25px;
+        }
+
+        /* PROCESO */
+        .proceso-timeline {
+            max-width: 1000px;
+            margin: 60px auto;
+            position: relative;
+        }
+
+        .proceso-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #E31E24 0%, #7eb3d6 100%);
+            transform: translateX(-50%);
+        }
+
+        .proceso-step {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .proceso-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .proceso-content {
+            width: 45%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(30, 45, 61, 0.08);
+            border-left: 4px solid #7eb3d6;
+        }
+
+        .proceso-step:nth-child(even) .proceso-content {
+            border-left: none;
+            border-right: 4px solid #7eb3d6;
+        }
+
+        .proceso-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #1e2d3d;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .proceso-numero {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #E31E24;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3em;
+            box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3);
+        }
+
+        /* SERVICIOS A MEDIDA */
+        .servicios-lista {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+
+        .servicio-item {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 3px solid #7eb3d6;
+            transition: all 0.3s ease;
+        }
+
+        .servicio-item:hover {
+            border-top-color: #E31E24;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(30, 45, 61, 0.1);
+        }
+
+        .servicio-item p {
+            color: #333333;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        /* CTA FINAL */
+        .cta-final {
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            color: #ffffff;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .cta-final p {
+            font-size: 1.4em;
+            color: #7eb3d6;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .contact-info {
+            margin-top: 50px;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-info a {
+            color: #7eb3d6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            color: #ffffff;
+        }
+
+        /* FIRMA FINAL */
+        .firma-final {
+            background: #f8f9fa;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .firma-final p {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #1e2d3d;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .firma-final .autor {
+            color: #E31E24;
+            font-size: 1.3em;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            color: #ffffff;
+            padding: 60px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .footer-logo .highlight {
+            color: #E31E24;
+        }
+
+        .footer-tagline {
+            color: #7eb3d6;
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .footer-divider {
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #7eb3d6 50%, transparent 100%);
+            margin: 30px auto;
+        }
+
+        .footer-info {
+            font-size: 0.95em;
+            color: rgba(126, 179, 214, 0.8);
+            line-height: 1.8;
+        }
+
+        .footer-copyright {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(126, 179, 214, 0.2);
+            font-size: 0.85em;
+            color: rgba(126, 179, 214, 0.6);
+        }
+
+        /* SVG ICONS */
+        .icon-svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .pilares-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cliente-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .programas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .servicios-lista {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .proceso-timeline::before {
+                left: 20px;
+            }
+
+            .proceso-step {
+                flex-direction: row !important;
+            }
+
+            .proceso-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+            }
+
+            .proceso-numero {
+                left: 20px;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+
+            .cta-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .rejection-list {
+                grid-template-columns: 1fr;
+            }
+
+            .servicios-lista {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                font-size: 1.4em;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <div>
+                <div class="logo">LA ESTR<span class="highlight">A</span>TEGA</div>
+                <div class="tagline">"Primero excavamos. Luego diferenciamos."</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>La consultora que crea estrategias imposibles de copiar.</h1>
+            <p class="subtitle">
+                Transformamos PYMEs latinoamericanas desde su raíz:<br>
+                el liderazgo, la identidad y la diferenciación estratégica.
+            </p>
+            <p class="microfrase">Tu rareza es tu ventaja competitiva más poderosa.</p>
+            <div class="cta-container">
+                <a href="mailto:laestratega.latam@gmail.com?subject=Solicitud%20Diagnóstico%20de%20Rareza™" class="btn btn-primary">Diagnóstico de Rareza™</a>
+                <a href="#programas" class="btn btn-secondary">Descargar KIT MAPEA™</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section class="section section-alt">
+        <h2 class="section-title">Somos La Estratega™</h2>
+        <div class="content-box">
+            <p>
+                Una firma de consultoría estratégica especializada en <strong>estrategias de diferenciación</strong>, 
+                transformación empresarial y creación de océanos azules para PYMEs latinoamericanas.
+            </p>
+            <p>
+                Combinamos coaching ejecutivo, autoconocimiento profundo y estrategia de diferenciación radical 
+                para construir negocios con identidad, dirección y sostenibilidad.
+            </p>
+        </div>
+
+        <div class="philosophy-box">
+            <p>La estrategia no comienza en el mercado.</p>
+            <p>Comienza en el líder.</p>
+        </div>
+
+        <div class="rejection-list">
+            <div class="rejection-item">No hacemos marketing táctico.</div>
+            <div class="rejection-item">No copiamos modelos.</div>
+            <div class="rejection-item">No entregamos recetas rápidas.</div>
+            <div class="rejection-item">Trabajamos con líderes que buscan claridad, dirección y sostenibilidad.</div>
+        </div>
+
+        <div class="quote-box">
+            <p>"No necesitas ser mejor que tu competencia.<br>Necesitas dejar de tener competencia."</p>
+        </div>
+    </section>
+
+    <!-- QUÉ HACEMOS -->
+    <section class="section">
+        <h2 class="section-title">Qué Hacemos</h2>
+        <p class="section-subtitle">Creamos diferenciación estratégica imposible de copiar.</p>
+
+        <div class="pilares-grid">
+            <div class="pilar destacado">
+                <div class="pilar-numero">1</div>
+                <h3>Excavación del líder (EXCAVA™)</h3>
+                <p>Autoconocimiento estratégico, claridad personal y rareza profesional. Aquí nace tu diferenciación.</p>
+            </div>
+
+            <div class="pilar destacado">
+                <div class="pilar-numero">2</div>
+                <h3>Estrategia de rareza (MAPEA™ + Océano Azul™)</h3>
+                <p>Convertimos tu autenticidad en un modelo de negocio, una propuesta de valor única y una estrategia sostenible.</p>
+            </div>
+
+            <div class="pilar destacado">
+                <div class="pilar-numero">3</div>
+                <h3>Implementación y coherencia (FORTALEZA VISIBLE™)</h3>
+                <p>Alineamos estructura, liderazgo, cultura y comunicación para hacer visible lo que te hace único.</p>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <p>"La diferenciación sostenible no se diseña. Se excava."</p>
+        </div>
+    </section>
+
+    <!-- A QUIÉN NOS DIRIGIMOS -->
+    <section class="section section-alt">
+        <h2 class="section-title">A Quién Nos Dirigimos</h2>
+        <p class="section-subtitle">Trabajamos con líderes que están cansados de competir.</p>
+
+        <div class="cliente-grid">
+            <div class="cliente-box">
+                <svg class="icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px; margin-bottom: 20px;">
+                    <circle cx="50" cy="50" r="45" fill="#7eb3d6" opacity="0.15"/>
+                    <rect x="25" y="25" width="20" height="20" fill="#7eb3d6" rx="3"/>
+                    <rect x="55" y="25" width="20" height="20" fill="#1e2d3d" rx="3"/>
+                    <rect x="25" y="55" width="20" height="20" fill="#1e2d3d" rx="3"/>
+                    <rect x="55" y="55" width="20" height="20" fill="#E31E24" rx="3"/>
+                    <path d="M 45 30 L 50 30 L 50 25 L 55 25 L 55 30 L 55 35 L 50 35 L 50 40 L 45 40 L 45 35 L 45 30 Z" fill="#7eb3d6"/>
+                    <path d="M 50 45 L 55 45 L 55 50 L 55 55 L 50 55 L 45 55 L 45 50 L 45 45 L 50 45 Z" fill="#1e2d3d"/>
+                </svg>
+                <h3>PYMEs con:</h3>
+                <ul>
+                    <li>Facturación anual: $150K+</li>
+                    <li>10+ años en operación</li>
+                    <li>Equipos familiares o mixtos</li>
+                    <li>Tendencia a competir por precio</li>
+                    <li>Sensación de haber "tocado techo"</li>
+                </ul>
+            </div>
+
+            <div class="cliente-box">
+                <svg class="icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px; margin-bottom: 20px;">
+                    <circle cx="50" cy="50" r="45" fill="#1e2d3d" opacity="0.1"/>
+                    <circle cx="50" cy="35" r="12" fill="#7eb3d6"/>
+                    <path d="M 50 47 Q 35 47, 30 55 L 30 75 Q 30 80, 35 80 L 65 80 Q 70 80, 70 75 L 70 55 Q 65 47, 50 47 Z" fill="#1e2d3d"/>
+                    <circle cx="50" cy="35" r="6" fill="#E31E24"/>
+                    <rect x="45" y="60" width="10" height="3" fill="#7eb3d6"/>
+                    <rect x="40" y="68" width="20" height="3" fill="#7eb3d6"/>
+                </svg>
+                <h3>Líderes con:</h3>
+                <ul>
+                    <li>Deseo de claridad y dirección</li>
+                    <li>Confusión estratégica</li>
+                    <li>Identidad profesional desalineada</li>
+                    <li>Fatiga decisional</li>
+                    <li>Necesidad de orden interno</li>
+                </ul>
+            </div>
+
+            <div class="cliente-box rechazo-box" style="grid-column: 1 / -1;">
+                <svg class="icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px; margin-bottom: 20px;">
+                    <circle cx="50" cy="50" r="45" fill="#E31E24" opacity="0.1"/>
+                    <circle cx="50" cy="50" r="35" stroke="#E31E24" stroke-width="4" fill="none"/>
+                    <line x1="20" y1="20" x2="80" y2="80" stroke="#E31E24" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="80" y1="20" x2="20" y2="80" stroke="#E31E24" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+                <h3>Rechazamos:</h3>
+                <ul>
+                    <li>Quienes buscan recetas rápidas</li>
+                    <li>Líderes resistentes al cambio</li>
+                    <li>Microempresas informales</li>
+                    <li>Servicios basados solo en marketing táctico</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMAS DISPONIBLES -->
+    <section class="section" id="programas">
+        <h2 class="section-title">Programas Disponibles</h2>
+
+        <div class="programas-grid">
+            <div class="programa featured">
+                <svg class="icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#7eb3d6" opacity="0.2"/>
+                    <path d="M 20 50 Q 30 40, 40 50 T 60 50 T 80 50" stroke="#7eb3d6" stroke-width="4" fill="none"/>
+                    <path d="M 20 60 Q 30 50, 40 60 T 60 60 T 80 60" stroke="#7eb3d6" stroke-width="4" fill="none"/>
+                    <path d="M 20 70 Q 30 60, 40 70 T 60 70 T 80 70" stroke="#E31E24" stroke-width="5" fill="none"/>
+                    <circle cx="50" cy="30" r="8" fill="#E31E24"/>
+                </svg>
+                <h3>Estrategia de Océano Azul™</h3>
+                <p>Crea un mercado donde tu competencia deje de existir.</p>
+                <div class="incluye">
+                    <strong>Incluye:</strong> Canvas de Océano Azul™, PVU™, Blueprint de Posicionamiento™, Plan Comercial 90 días.
+                </div>
+                <p class="dirigido">Dirigido a: PYMEs listas para reposicionarse.</p>
+                <a href="https://wa.me/50370804943?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20el%20programa%20Estrategia%20de%20Océano%20Azul™" target="_blank" class="btn btn-primary" style="width: 100%;">Conocer el programa</a>
+            </div>
+
+            <div class="programa featured">
+                <svg class="icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="25" y="40" width="50" height="50" fill="#7eb3d6" opacity="0.2" rx="4"/>
+                    <rect x="30" y="45" width="15" height="20" fill="#1e2d3d"/>
+                    <rect x="55" y="45" width="15" height="20" fill="#1e2d3d"/>
+                    <rect x="40" y="65" width="20" height="25" fill="#E31E24"/>
+                    <rect x="20" y="35" width="60" height="8" fill="#1e2d3d"/>
+                    <polygon points="50,10 20,35 80,35" fill="#E31E24"/>
+                    <circle cx="50" cy="22" r="3" fill="#7eb3d6"/>
+                </svg>
+                <h3>Fortaleza Visible™</h3>
+                <p>Tu estrategia convertida en cultura, orden y presencia visible.</p>
+                <div class="incluye">
+                    <strong>Incluye:</strong> Gobernanza familiar–empresarial, comunicación interna, cultura, plan de marketing.
+                </div>
+                <p class="dirigido">Dirigido a: Empresas familiares o equipos directivos.</p>
+                <a href="https://wa.me/50370804943?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20el%20programa%20Fortaleza%20Visible™" target="_blank" class="btn btn-primary" style="width: 100%;">Conocer el programa</a>
+            </div>
+
+            <div class="programa featured">
+                <svg class="icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#7eb3d6" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="30" fill="none" stroke="#7eb3d6" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="20" fill="none" stroke="#E31E24" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="8" fill="#E31E24"/>
+                    <line x1="50" y1="5" x2="50" y2="25" stroke="#1e2d3d" stroke-width="3"/>
+                    <line x1="50" y1="75" x2="50" y2="95" stroke="#1e2d3d" stroke-width="3"/>
+                    <line x1="5" y1="50" x2="25" y2="50" stroke="#1e2d3d" stroke-width="3"/>
+                    <line x1="75" y1="50" x2="95" y2="50" stroke="#1e2d3d" stroke-width="3"/>
+                </svg>
+                <h3>Foco Estratégico Personal™</h3>
+                <p>Mentoría premium para profesionales que buscan rediseñar su marca personal desde la autenticidad.</p>
+                <div class="incluye">
+                    <strong>Incluye:</strong> Mapa de Rareza, Blueprint personal, PVU™, plan de visibilidad.
+                </div>
+                <p class="dirigido">Dirigido a: consultores, coaches, directores, profesionales senior.</p>
+                <a href="https://wa.me/50370804943?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20el%20programa%20Foco%20Estratégico%20Personal™" target="_blank" class="btn btn-primary" style="width: 100%;">Conocer el programa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS A MEDIDA -->
+    <section class="section section-alt">
+        <h2 class="section-title">Servicios Especializados a la Medida</h2>
+        <p class="section-subtitle">Consultoría estratégica según tu necesidad</p>
+
+        <div class="servicios-lista">
+            <div class="servicio-item"><p>Posicionamiento Empresarial</p></div>
+            <div class="servicio-item"><p>Transformación Digital PYMEs</p></div>
+            <div class="servicio-item"><p>Alineación de Equipos Familiares</p></div>
+            <div class="servicio-item"><p>Sesiones de Liderazgo Consciente</p></div>
+            <div class="servicio-item"><p>Mentorías Especializadas</p></div>
+            <div class="servicio-item"><p>Estrategia de Marketing</p></div>
+        </div>
+
+        <div class="quote-box">
+            <p>"Cada empresa tiene una rareza distinta.<br>Por eso nuestros servicios nunca son genéricos."</p>
+        </div>
+    </section>
+
+    <!-- NUESTRO PROCESO -->
+    <section class="section">
+        <h2 class="section-title">Nuestro Proceso</h2>
+        <p class="section-subtitle">Metodología propietaria registrada</p>
+
+        <div class="proceso-timeline">
+            <div class="proceso-step">
+                <div class="proceso-content">
+                    <h4>Diagnóstico de Rareza™</h4>
+                    <p>Identificación profunda de tus diferenciadores únicos y zonas de genio natural.</p>
+                </div>
+                <div class="proceso-numero">1</div>
+            </div>
+
+            <div class="proceso-step">
+                <div class="proceso-content">
+                    <h4>EXCAVA™ — Transformación del líder</h4>
+                    <p>Arqueología biográfica y claridad de identidad para construir desde la autenticidad.</p>
+                </div>
+                <div class="proceso-numero">2</div>
+            </div>
+
+            <div class="proceso-step">
+                <div class="proceso-content">
+                    <h4>La Estrategia de la Rareza™</h4>
+                    <p>Framework de 6 dimensiones para convertir tu rareza en estrategia sostenible.</p>
+                </div>
+                <div class="proceso-numero">3</div>
+            </div>
+
+            <div class="proceso-step">
+                <div class="proceso-content">
+                    <h4>MAPEA™ — Tu océano azul</h4>
+                    <p>Modelo, Audiencia, Propuesta, Estrategia y Acción para diferenciación radical.</p>
+                </div>
+                <div class="proceso-numero">4</div>
+            </div>
+
+            <div class="proceso-step">
+                <div class="proceso-content">
+                    <h4>FORTALEZA VISIBLE™</h4>
+                    <p>Implementación, coherencia y presencia visible en todos tus puntos de contacto.</p>
+                </div>
+                <div class="proceso-numero">5</div>
+            </div>
+
+            <div class="proceso-step">
+                <div class="proceso-content">
+                    <h4>Mentoría de Coherencia™</h4>
+                    <p>Acompañamiento para sostener tu diferenciación en el tiempo.</p>
+                </div>
+                <div class="proceso-numero">6</div>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <p>"No se trata de brillar. Se trata de iluminar."</p>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final" id="contacto">
+        <h2>¿Listo para construir tu océano azul?</h2>
+        <p>
+            Agenda tu sesión Diagnóstico de Rareza™ y descubre por qué tu empresa no necesita más marketing…<br>
+            sino más autenticidad estratégica.
+        </p>
+        <div class="cta-container">
+            <a href="mailto:laestratega.latam@gmail.com?subject=Agendar%20Diagnóstico%20de%20Rareza™&body=Hola,%0D%0A%0D%0AMe%20interesa%20agendar%20una%20sesión%20de%20Diagnóstico%20de%20Rareza™.%0D%0A%0D%0ANombre:%0D%0AEmpresa:%0D%0ATipo%20de%20consulta:%0D%0A%0D%0AGracias." class="btn btn-primary">Agendar Diagnóstico</a>
+        </div>
+        <div class="contact-info">
+            <p>Correo: <a href="mailto:laestratega.latam@gmail.com">laestratega.latam@gmail.com</a></p>
+            <p style="margin-top: 10px;">Tiempo de respuesta: 24–48h hábiles</p>
+        </div>
+    </section>
+
+    <!-- FRASE FINAL -->
+    <section class="firma-final">
+        <p>"Tu rareza no necesita aprobación. Solo dirección."</p>
+        <p class="autor">— La Estratega™</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">LA ESTR<span class="highlight">A</span>TEGA</div>
+            <p class="footer-tagline">Creadora de Océanos Azules para PYMEs Latinoamericanas</p>
+            
+            <div class="footer-divider"></div>
+            
+            <div class="footer-info">
+                <p style="font-size: 1.1em; margin-bottom: 20px;">
+                    <strong>"Primero excavamos. Luego diferenciamos."</strong>
+                </p>
+                <p>Consultoría Estratégica | Diferenciación Radical | Océanos Azules</p>
+            </div>
+
+            <div class="footer-copyright">
+                <p>© 2025 La Estratega™ — Todos los derechos reservados</p>
+                <p style="margin-top: 8px;">San Salvador, El Salvador</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
