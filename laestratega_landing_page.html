@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Estratégica 2026 - LA ESTRATEGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 40px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(126,179,214,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+        }
+        
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+        
+        .star {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #7eb3d6 0%, #a3c9e2 100%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 4px 12px rgba(126, 179, 214, 0.4));
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            color: white;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #7eb3d6;
+            line-height: 1.4;
+        }
+        
+        .hero-description {
+            font-size: 1.4em;
+            margin-bottom: 60px;
+            line-height: 1.8;
+            color: #b8d4e5;
+            font-weight: 300;
+        }
+        
+        .divider {
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #7eb3d6 50%, transparent 100%);
+            margin: 40px auto;
+        }
+        
+        /* MANIFEST SECTION */
+        .manifest {
+            padding: 100px 40px;
+            background: white;
+        }
+        
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .manifest-text {
+            font-size: 1.3em;
+            line-height: 2;
+            color: #1e2d3d;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .manifest-highlight {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #E31E24;
+            font-weight: 600;
+            display: block;
+            margin: 30px 0;
+        }
+        
+        /* PARA QUIEN SECTION */
+        .para-quien {
+            padding: 100px 40px;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #1e2d3d;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #E31E24;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .column-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .column-card.si {
+            border-left: 4px solid #7eb3d6;
+        }
+        
+        .column-card.no {
+            border-left: 4px solid #E31E24;
+        }
+        
+        .column-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #1e2d3d;
+        }
+        
+        .column-card ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .column-card li {
+            padding: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .column-card.si li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #7eb3d6;
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+        
+        .column-card.no li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #E31E24;
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+        
+        /* PROBLEMA SECTION */
+        .problema {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            color: white;
+        }
+        
+        .problema .section-title {
+            color: white;
+        }
+        
+        .problema .section-title::after {
+            background: #7eb3d6;
+        }
+        
+        .problema-intro {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #7eb3d6;
+            font-style: italic;
+        }
+        
+        .problema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .problema-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid #E31E24;
+        }
+        
+        .problema-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #7eb3d6;
+        }
+        
+        .problema-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-top: 80px;
+            color: white;
+            line-height: 1.4;
+        }
+        
+        /* COMO TRABAJAMOS */
+        .como-trabajamos {
+            padding: 100px 40px;
+            background: white;
+        }
+        
+        .proceso {
+            max-width: 900px;
+            margin: 60px auto 0;
+            text-align: center;
+        }
+        
+        .proceso-formula {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #1e2d3d;
+            margin-bottom: 60px;
+            line-height: 1.6;
+        }
+        
+        .proceso-formula .arrow {
+            color: #7eb3d6;
+            margin: 0 20px;
+        }
+        
+        .proceso-formula .highlight {
+            color: #E31E24;
+            font-weight: 600;
+        }
+        
+        .acompanamiento-list {
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .acompanamiento-list ul {
+            list-style: none;
+        }
+        
+        .acompanamiento-list li {
+            padding: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        .acompanamiento-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #E31E24;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        /* RUTAS */
+        .rutas {
+            padding: 100px 40px;
+            background: #f8f9fa;
+        }
+        
+        .rutas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+        
+        .ruta-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .ruta-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(126,179,214,0.3);
+        }
+        
+        .ruta-number {
+            background: linear-gradient(135deg, #7eb3d6 0%, #a3c9e2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+        }
+        
+        .ruta-content {
+            padding: 30px;
+        }
+        
+        .ruta-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            color: #1e2d3d;
+            margin-bottom: 15px;
+        }
+        
+        .ruta-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        /* ANTES DE AGENDAR */
+        .antes-agendar {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #B71C4C 0%, #E31E24 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .antes-agendar .section-title {
+            color: white;
+        }
+        
+        .antes-agendar .section-title::after {
+            background: white;
+        }
+        
+        .advertencia {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-size: 1.3em;
+            line-height: 2;
+        }
+        
+        .primer-paso {
+            background: rgba(255,255,255,0.15);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+        
+        .primer-paso p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .primer-paso strong {
+            font-size: 1.5em;
+            display: block;
+            margin-top: 20px;
+        }
+        
+        /* ESTE NO ES */
+        .este-no-es {
+            padding: 100px 40px;
+            background: #1e2d3d;
+            color: white;
+        }
+        
+        .este-no-es .section-title {
+            color: white;
+        }
+        
+        .este-no-es .section-title::after {
+            background: #7eb3d6;
+        }
+        
+        .ready-list {
+            max-width: 700px;
+            margin: 60px auto;
+            text-align: left;
+        }
+        
+        .ready-list ul {
+            list-style: none;
+        }
+        
+        .ready-list li {
+            padding: 20px 0;
+            padding-left: 40px;
+            position: relative;
+            color: #b8d4e5;
+            line-height: 1.8;
+            font-size: 1.2em;
+        }
+        
+        .ready-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #7eb3d6;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        
+        /* CTA FINAL */
+        .cta-final {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, #7eb3d6 0%, #a3c9e2 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-final h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #1e2d3d;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #E31E24;
+            color: white;
+            padding: 20px 60px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(227, 30, 36, 0.4);
+            letter-spacing: 1px;
+            margin-top: 30px;
+        }
+        
+        .cta-button:hover {
+            background: #B71C4C;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(183, 28, 76, 0.5);
+        }
+        
+        .cta-nota {
+            margin-top: 40px;
+            font-size: 1.1em;
+            color: #1e2d3d;
+            font-style: italic;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #1e2d3d;
+            color: #b8d4e5;
+            padding: 60px 40px 30px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .footer-logo .red {
+            color: #E31E24;
+        }
+        
+        .footer-tagline {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            color: #7eb3d6;
+        }
+        
+        .footer-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #7eb3d6 50%, transparent 100%);
+            margin: 40px auto;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4em;
+            }
+            
+            .hero-description {
+                font-size: 1.1em;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .problema-grid,
+            .rutas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .proceso-formula {
+                font-size: 1.6em;
+            }
+            
+            .problema-tagline {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="star"></div>
+            <h1 class="hero-title">Agenda Estratégica 2026</h1>
+            <p class="hero-subtitle">No todos los negocios están listos para crecer.<br>Algunos primero necesitan dirección.</p>
+            <div class="divider"></div>
+            <p class="hero-description">
+                2026 no será un año para improvisar. Será un año para decidir con claridad, 
+                enfocar recursos y construir negocios más sólidos, rentables y coherentes.
+            </p>
+        </div>
+    </section>
+    
+    <!-- MANIFEST -->
+    <section class="manifest">
+        <div class="section-container">
+            <p class="manifest-text">
+                En LA ESTRATEGA™ no trabajamos con volumen ni promesas rápidas. 
+                <span class="manifest-highlight">Trabajamos con líderes y PYMEs que han entendido que el crecimiento real comienza ordenando el negocio desde adentro.</span>
+            </p>
+        </div>
+    </section>
+    
+    <!-- PARA QUIÉN -->
+    <section class="para-quien">
+        <div class="section-container">
+            <h2 class="section-title">¿Para quién es esta agenda?</h2>
+            
+            <div class="two-columns">
+                <div class="column-card si">
+                    <h3>Esta agenda es para:</h3>
+                    <ul>
+                        <li>PYMEs con 10+ años en el mercado.</li>
+                        <li>Negocios que ya venden, pero sienten desorden, desgaste o estancamiento.</li>
+                        <li>Líderes que necesitan claridad estratégica, no más tácticas.</li>
+                        <li>Empresas que buscan diferenciación real, no competir por precio.</li>
+                    </ul>
+                </div>
+                
+                <div class="column-card no">
+                    <h3>No es para:</h3>
+                    <ul>
+                        <li>Negocios que buscan soluciones rápidas.</li>
+                        <li>Empresas que no están dispuestas a revisar lo que ya no funciona.</li>
+                        <li>Quienes confunden marketing con estrategia.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PROBLEMA -->
+    <section class="problema">
+        <div class="section-container">
+            <h2 class="section-title">El problema no es crecer.<br>El problema es crecer sin dirección.</h2>
+            
+            <p class="problema-intro">
+                La mayoría de las empresas no fracasan por falta de esfuerzo. Fracasan por:
+            </p>
+            
+            <div class="problema-grid">
+                <div class="problema-item">
+                    <h4>Decisiones reactivas</h4>
+                </div>
+                <div class="problema-item">
+                    <h4>Portafolios inflados y poco rentables</h4>
+                </div>
+                <div class="problema-item">
+                    <h4>Falta de diferenciación</h4>
+                </div>
+                <div class="problema-item">
+                    <h4>Estrategias copiadas</h4>
+                </div>
+                <div class="problema-item">
+                    <h4>Liderazgos sobrecargados</h4>
+                </div>
+            </div>
+            
+            <p class="problema-tagline">2026 exige otra forma de dirigir.</p>
+        </div>
+    </section>
+    
+    <!-- CÓMO TRABAJAMOS -->
+    <section class="como-trabajamos">
+        <div class="section-container">
+            <h2 class="section-title">Cómo trabajamos en LA ESTRATEGA™</h2>
+            
+            <div class="proceso">
+                <p class="proceso-formula">
+                    Nuestro enfoque no empieza ejecutando. <span class="highlight">Empieza excavando.</span>
+                </p>
+                
+                <p class="proceso-formula">
+                    Primero <span class="highlight">claridad</span> 
+                    <span class="arrow">→</span> 
+                    luego <span class="highlight">decisión</span> 
+                    <span class="arrow">→</span> 
+                    después <span class="highlight">crecimiento</span>
+                </p>
+                
+                <div class="divider"></div>
+                
+                <div class="acompanamiento-list">
+                    <p style="font-size: 1.2em; margin-bottom: 30px; color: #1e2d3d; font-weight: 600;">Acompañamos a los negocios a:</p>
+                    <ul>
+                        <li>Definir dirección estratégica</li>
+                        <li>Ordenar su modelo de negocio</li>
+                        <li>Construir diferenciación sostenible</li>
+                        <li>Alinear marketing, operación y liderazgo</li>
+                        <li>Prepararse para crecer sin perder control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RUTAS -->
+    <section class="rutas">
+        <div class="section-container">
+            <h2 class="section-title">Rutas de acompañamiento 2026</h2>
+            <p style="text-align: center; font-size: 1.2em; color: #666; margin-bottom: 40px;">
+                Dependiendo del momento del negocio, existen tres rutas:
+            </p>
+            
+            <div class="rutas-grid">
+                <div class="ruta-card">
+                    <div class="ruta-number">1</div>
+                    <div class="ruta-content">
+                        <h3>Diagnóstico Estratégico 2026</h3>
+                        <p>Para negocios que necesitan entender dónde están parados y qué debe cambiar.</p>
+                    </div>
+                </div>
+                
+                <div class="ruta-card">
+                    <div class="ruta-number">2</div>
+                    <div class="ruta-content">
+                        <h3>Programas Estratégicos</h3>
+                        <p>Para empresas en transición que requieren estructura, foco y metodología.</p>
+                    </div>
+                </div>
+                
+                <div class="ruta-card">
+                    <div class="ruta-number">3</div>
+                    <div class="ruta-content">
+                        <h3>Consultoría Estratégica 1:1</h3>
+                        <p>Para líderes que necesitan dirección profunda, decisiones complejas y acompañamiento continuo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ANTES DE AGENDAR -->
+    <section class="antes-agendar">
+        <div class="section-container">
+            <h2 class="section-title">Antes de agendar</h2>
+            
+            <p class="advertencia">
+                No abrimos agenda de forma automática.<br><br>
+                Todos los proyectos pasan por un proceso previo de evaluación 
+                para asegurar alineación estratégica.
+            </p>
+            
+            <div class="primer-paso">
+                <p>👉 El primer paso es el</p>
+                <strong>Diagnóstico Estratégico 2026</strong>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ESTE NO ES -->
+    <section class="este-no-es">
+        <div class="section-container">
+            <h2 class="section-title">Este no es un proceso para todos.</h2>
+            
+            <p style="text-align: center; font-size: 1.3em; margin-bottom: 40px; color: #7eb3d6;">
+                Es un espacio para quienes están listos para:
+            </p>
+            
+            <div class="ready-list">
+                <ul>
+                    <li>Cuestionar su modelo actual</li>
+                    <li>Tomar decisiones incómodas</li>
+                    <li>Dejar atrás lo que ya no suma</li>
+                    <li>Construir un negocio con dirección real</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <div class="section-container">
+            <h2>Si este mensaje resonó contigo</h2>
+            <p style="font-size: 1.4em; margin: 30px 0;">
+                El siguiente paso no es una llamada. Es claridad.
+            </p>
+            
+            <a href="https://wa.me/50376578075?text=Hola%2C%20quiero%20iniciar%20el%20Diagn%C3%B3stico%20Estrat%C3%A9gico%202026.%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20c%C3%B3mo%20trabajar%20con%20LA%20ESTRATEGA%E2%84%A2." class="cta-button" target="_blank">👉 INICIA EL DIAGNÓSTICO ESTRATÉGICO 2026</a>
+            
+            <p class="cta-nota">
+                Agenda 2026 abierta solo para proyectos que quieran ser alineados.
+            </p>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">LA ESTR<span class="red">A</span>TEGA™</div>
+        <p class="footer-tagline">
+            Estrategia, diferenciación y dirección para negocios que deciden crecer mejor.
+        </p>
+        <div class="footer-divider"></div>
+        <p style="margin: 20px 0; font-size: 1.05em;">
+            "Primero excavamos. Luego diferenciamos."
+        </p>
+        <p class="copyright">
+            © 2026 LA ESTRATEGA™. Todos los derechos reservados.<br>
+            San Salvador, El Salvador
+        </p>
+    </footer>
+</body>
+</html>
