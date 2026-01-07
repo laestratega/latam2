@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diccionario de Principios - LA ESTRATEGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        /* PORTADA */
+        .cover {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e2d3d 0%, #2a3d4f 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+        
+        .star {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #7eb3d6 0%, #a3c9e2 100%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin: 0 auto 40px;
+            filter: drop-shadow(0 4px 8px rgba(126, 179, 214, 0.3));
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-red {
+            color: #E31E24;
+        }
+        
+        .cover h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin: 40px 0 20px;
+            letter-spacing: 2px;
+        }
+        
+        .divider-line {
+            width: 400px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #7eb3d6 50%, transparent 100%);
+            margin: 40px auto;
+        }
+        
+        .cover-subtitle {
+            font-size: 1.3em;
+            line-height: 1.8;
+            max-width: 600px;
+            color: #b8d4e5;
+            margin-top: 20px;
+        }
+        
+        /* NAVEGACIÓN */
+        .nav {
+            background: #1e2d3d;
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: white;
+            letter-spacing: 2px;
+        }
+        
+        .btn-pdf {
+            padding: 10px 25px;
+            background: #E31E24;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        
+        .btn-pdf:hover {
+            background: #c01820;
+            transform: translateY(-2px);
+        }
+        
+        /* GRID DE CONCEPTOS */
+        .concepts-section {
+            padding: 80px 40px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #1e2d3d;
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .concept-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 4px solid #7eb3d6;
+            position: relative;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .concept-card:nth-child(2n) {
+            border-top-color: #B49DD6;
+        }
+        
+        .concept-card:nth-child(3n) {
+            border-top-color: #E31E24;
+        }
+        
+        .concept-card:nth-child(5n) {
+            border-top-color: #B71C4C;
+        }
+        
+        .concept-number {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: rgba(30, 45, 61, 0.08);
+            font-weight: 700;
+        }
+        
+        .concept-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #1e2d3d;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .concept-definition {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #4a4a4a;
+        }
+        
+        /* CTA FINAL */
+        .cta-section {
+            background: linear-gradient(135deg, #7eb3d6 0%, #5a9bbf 100%);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: white;
+            color: #1e2d3d;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: #1e2d3d;
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+        }
+        
+        .footer .star {
+            margin: 0 auto 30px;
+        }
+        
+        .footer .logo {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .footer p {
+            color: #b8d4e5;
+            line-height: 2;
+        }
+        
+        .footer-tagline {
+            font-size: 1.1em;
+            color: #7eb3d6;
+            margin: 30px 0;
+            font-weight: 600;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .cover h1 {
+                font-size: 2.5em;
+            }
+            
+            .concepts-section {
+                padding: 40px 20px;
+            }
+            
+            .concepts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2em;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        /* PRINT */
+        @media print {
+            .nav, .btn-pdf, .cta-section {
+                display: none;
+            }
+            
+            .concept-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PORTADA -->
+    <div class="cover">
+        <div class="star"></div>
+        <div class="logo">LA ESTR<span class="logo-red">A</span>TEGA</div>
+        <div class="divider-line"></div>
+        <h1>Diccionario de Principios</h1>
+        <p class="cover-subtitle">
+            10 conceptos fundamentales para liderar con claridad,<br>
+            decidir con intención y crecer con propósito.
+        </p>
+    </div>
+    
+    <!-- NAVEGACIÓN -->
+    <div class="nav">
+        <div class="nav-content">
+            <div class="nav-logo">LA ESTR<span class="logo-red">A</span>TEGA</div>
+            <button class="btn-pdf" onclick="window.print()">📄 Descargar PDF</button>
+        </div>
+    </div>
+    
+    <!-- CONCEPTOS -->
+    <div class="concepts-section">
+        <div class="section-header">
+            <h2>Principios que Sostienen el Crecimiento</h2>
+            <p>Estos conceptos definen cómo pensamos estrategia, liderazgo y diferenciación auténtica.</p>
+        </div>
+        
+        <div class="concepts-grid">
+            <!-- 1. AUTENTICIDAD -->
+            <div class="concept-card">
+                <span class="concept-number">01</span>
+                <h3 class="concept-title">Autenticidad</h3>
+                <p class="concept-definition">
+                    Coherencia entre lo que se cree, se decide y se ejecuta, aun cuando no sea conveniente.
+                </p>
+            </div>
+            
+            <!-- 2. DISCERNIMIENTO -->
+            <div class="concept-card">
+                <span class="concept-number">02</span>
+                <h3 class="concept-title">Discernimiento</h3>
+                <p class="concept-definition">
+                    Capacidad de distinguir entre avance y distracción, entre oportunidad y ruido.
+                </p>
+            </div>
+            
+            <!-- 3. DIRECCIÓN -->
+            <div class="concept-card">
+                <span class="concept-number">03</span>
+                <h3 class="concept-title">Dirección</h3>
+                <p class="concept-definition">
+                    Decisión consciente sobre hacia dónde no se va, antes de definir hacia dónde sí.
+                </p>
+            </div>
+            
+            <!-- 4. ORDEN -->
+            <div class="concept-card">
+                <span class="concept-number">04</span>
+                <h3 class="concept-title">Orden</h3>
+                <p class="concept-definition">
+                    Estructura que sostiene el crecimiento sin colapsar el sistema.
+                </p>
+            </div>
+            
+            <!-- 5. PROCESO -->
+            <div class="concept-card">
+                <span class="concept-number">05</span>
+                <h3 class="concept-title">Proceso</h3>
+                <p class="concept-definition">
+                    Camino formativo que prepara la capacidad antes del resultado.
+                </p>
+            </div>
+            
+            <!-- 6. CRECIMIENTO -->
+            <div class="concept-card">
+                <span class="concept-number">06</span>
+                <h3 class="concept-title">Crecimiento</h3>
+                <p class="concept-definition">
+                    Expansión que honra el fundamento, no solo el resultado.
+                </p>
+            </div>
+            
+            <!-- 7. CLARIDAD -->
+            <div class="concept-card">
+                <span class="concept-number">07</span>
+                <h3 class="concept-title">Claridad</h3>
+                <p class="concept-definition">
+                    Capacidad de ver con precisión lo esencial, sin ruido emocional ni presión externa.
+                </p>
+            </div>
+            
+            <!-- 8. ESTRATEGIA -->
+            <div class="concept-card">
+                <span class="concept-number">08</span>
+                <h3 class="concept-title">Estrategia</h3>
+                <p class="concept-definition">
+                    Sistema de decisiones coherentes alineadas a una visión sostenida en el tiempo.
+                </p>
+            </div>
+            
+            <!-- 9. FUNDAMENTO -->
+            <div class="concept-card">
+                <span class="concept-number">09</span>
+                <h3 class="concept-title">Fundamento</h3>
+                <p class="concept-definition">
+                    Principios no negociables que sostienen la identidad del negocio y del líder.
+                </p>
+            </div>
+            
+            <!-- 10. OBEDIENCIA -->
+            <div class="concept-card">
+                <span class="concept-number">10</span>
+                <h3 class="concept-title">Obediencia</h3>
+                <p class="concept-definition">
+                    Decidir conforme a convicción, no a presión.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA -->
+    <div class="cta-section">
+        <div class="star" style="width: 80px; height: 80px;"></div>
+        <h2>¿Listo para aplicar estos principios<br>en tu negocio?</h2>
+        <p>
+            Trabajamos con líderes y empresas que quieren diferenciarse auténticamente,<br>
+            ordenar su estrategia y crecer de manera sostenible.
+        </p>
+        <div class="divider-line"></div>
+        <p style="margin-top: 40px; font-size: 1.3em; font-weight: 600;">
+            "Primero excavamos. Luego diferenciamos."
+        </p>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="star"></div>
+        <div class="logo">LA ESTR<span class="logo-red">A</span>TEGA</div>
+        <div class="divider-line"></div>
+        <p class="footer-tagline">Consultora en Estrategia • Diferenciación • Liderazgo Consciente</p>
+        <p style="margin-top: 30px;">
+            San Salvador, El Salvador<br>
+            laestratega.latam@gmail.com
+        </p>
+    </div>
+</body>
+</html>
