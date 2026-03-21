@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUILDHER Vital™</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap');
+
+:root {
+  --deep-purple: #4A2E5E;
+  --lavender: #E9E3EF;
+  --mid-purple: #7A5C91;
+  --warm-white: #F8F6FA;
+  --gold: #C2A15A;
+  --gold-light: #D4B87A;
+  --text-dark: #2A1A38;
+  --text-soft: #6B5480;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--warm-white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--deep-purple);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px 100px;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  border: 1px solid rgba(194,161,90,0.12);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-inner { position: relative; z-index: 2; max-width: 780px; }
+
+.hero-logo { margin-bottom: 44px; }
+
+.hero-logo img {
+  height: 90px;
+  filter: brightness(0) invert(1);
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: 1.12;
+  color: #F8F6FA;
+  margin-bottom: 28px;
+}
+
+.hero-headline em { font-style: italic; color: var(--gold-light); }
+
+.hero-sub {
+  font-weight: 300;
+  font-size: clamp(14px, 2vw, 17px);
+  letter-spacing: 0.06em;
+  color: rgba(248,246,250,0.72);
+  max-width: 500px;
+  margin: 0 auto 52px;
+  line-height: 1.8;
+}
+
+.hero-cta {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding: 16px 38px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.hero-cta:hover { background: var(--gold); color: var(--deep-purple); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(248,246,250,0.4);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px; height: 38px;
+  background: linear-gradient(to bottom, rgba(194,161,90,0.5), transparent);
+}
+
+/* STRIP */
+.strip {
+  background: var(--gold);
+  padding: 18px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.strip-item {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--deep-purple);
+  font-weight: 500;
+}
+
+/* SECTIONS */
+.section { padding: 96px 24px; }
+.container { max-width: 1060px; margin: 0 auto; }
+
+.label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+/* PROBLEMA */
+.problema { background: var(--warm-white); }
+
+.problema-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.problema-heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.15;
+  color: var(--deep-purple);
+  margin-bottom: 40px;
+}
+
+.problema-heading em { font-style: italic; color: var(--mid-purple); }
+
+.stat-row { display: flex; flex-direction: column; gap: 28px; }
+
+.stat-item { border-left: 2px solid var(--gold); padding-left: 20px; }
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--deep-purple);
+  line-height: 1;
+}
+
+.stat-desc {
+  font-size: 13px;
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+.problema-body {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--text-soft);
+}
+
+.problema-body + .problema-body { margin-top: 20px; }
+.problema-body strong { color: var(--deep-purple); font-weight: 500; }
+
+/* PROPUESTA */
+.propuesta { background: var(--deep-purple); position: relative; overflow: hidden; }
+
+.propuesta::before {
+  content: '';
+  position: absolute;
+  top: -180px; right: -180px;
+  width: 460px; height: 460px;
+  border-radius: 50%;
+  border: 1px solid rgba(194,161,90,0.1);
+  pointer-events: none;
+}
+
+.propuesta .label { color: rgba(194,161,90,0.6); }
+.propuesta-inner { max-width: 700px; }
+
+.propuesta-heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(32px, 4.5vw, 58px);
+  color: var(--warm-white);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.propuesta-heading em { font-style: italic; color: var(--gold-light); }
+
+.propuesta-body {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.82;
+  color: rgba(248,246,250,0.65);
+  max-width: 540px;
+}
+
+/* MODELO */
+.modelo { background: var(--lavender); }
+
+.modelo-heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 50px);
+  color: var(--deep-purple);
+  margin-bottom: 56px;
+}
+
+.energia-list { display: flex; flex-direction: column; }
+
+.energia-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 34px 0;
+  border-bottom: 1px solid rgba(74,46,94,0.12);
+}
+
+.energia-item:first-child { border-top: 1px solid rgba(74,46,94,0.12); }
+
+.energia-letter {
+  font-family: var(--serif);
+  font-size: 68px;
+  font-weight: 300;
+  color: rgba(74,46,94,0.14);
+  line-height: 1;
+  user-select: none;
+}
+
+.energia-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--deep-purple);
+  margin-bottom: 8px;
+}
+
+.energia-title span { color: var(--gold); font-style: italic; }
+
+.energia-desc {
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+/* PROGRAMA */
+.programa { background: var(--warm-white); }
+
+.programa-heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 50px);
+  color: var(--deep-purple);
+  margin-bottom: 52px;
+}
+
+.programa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: rgba(74,46,94,0.08);
+}
+
+.programa-card {
+  background: var(--warm-white);
+  padding: 44px 38px;
+  transition: background 0.3s;
+}
+
+.programa-card:hover { background: var(--lavender); }
+
+.programa-num {
+  display: block;
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 18px;
+}
+
+.programa-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--deep-purple);
+  margin-bottom: 12px;
+}
+
+.programa-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+/* RESULTADOS */
+.resultados { background: var(--deep-purple); text-align: center; }
+.resultados .label { color: rgba(194,161,90,0.6); }
+
+.resultados-heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 50px);
+  color: var(--warm-white);
+  margin-bottom: 60px;
+}
+
+.resultados-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(194,161,90,0.15);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.resultado-item {
+  background: var(--deep-purple);
+  padding: 48px 24px;
+  transition: background 0.3s;
+}
+
+.resultado-item:hover { background: #3d2552; }
+
+.resultado-icon {
+  font-size: 24px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.resultado-text {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(248,246,250,0.85);
+  line-height: 1.45;
+}
+
+/* CTA */
+.cta-section {
+  background: var(--lavender);
+  padding: 112px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: 'VITAL';
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 220px;
+  font-weight: 300;
+  color: rgba(74,46,94,0.05);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.cta-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+
+.cta-heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 50px);
+  color: var(--deep-purple);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.cta-heading em { font-style: italic; color: var(--mid-purple); }
+
+.cta-divider {
+  width: 40px; height: 1px;
+  background: var(--gold);
+  margin: 32px auto;
+}
+
+.cta-sub {
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--text-soft);
+  line-height: 1.82;
+  margin-bottom: 44px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--deep-purple);
+  color: var(--gold-light);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 18px 44px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover { background: var(--mid-purple); color: #fff; }
+
+/* FOOTER */
+footer {
+  background: var(--text-dark);
+  padding: 30px 24px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: rgba(248,246,250,0.3);
+  text-transform: uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .problema-grid { grid-template-columns: 1fr; gap: 48px; }
+  .programa-grid { grid-template-columns: 1fr; }
+  .resultados-grid { grid-template-columns: repeat(2, 1fr); }
+  .strip { gap: 18px; }
+  .energia-item { grid-template-columns: 48px 1fr; gap: 16px; }
+  .energia-letter { font-size: 46px; }
+}
+
+@media (max-width: 480px) {
+  .resultados-grid { grid-template-columns: 1fr 1fr; }
+  .hero-logo img { height: 66px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <img src="BUILHER_VITAL.png" alt="BUILDHER Vital">
+    </div>
+    <h1 class="hero-headline">
+      Rendimiento sostenible<br>comienza desde la <em>energía</em>
+    </h1>
+    <p class="hero-sub">
+      Sistema de gestión de energía para mujeres<br>en entornos de alta exigencia.<br>
+      No es motivación. Es estructura.
+    </p>
+    <a href="#cta" class="hero-cta">Solicitar información &rarr;</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Descubrir</span>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-item">Diagnóstico energético</span>
+  <span class="strip-item">Rutinas inteligentes</span>
+  <span class="strip-item">Sistema VITAL™</span>
+  <span class="strip-item">Plan de 30 días</span>
+</div>
+
+<!-- PROBLEMA -->
+<section class="section problema">
+  <div class="container">
+    <div class="problema-grid">
+      <div>
+        <span class="label">El diagnóstico</span>
+        <h2 class="problema-heading">
+          El problema<br>no es el <em>tiempo.</em>
+        </h2>
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="stat-num">73%</div>
+            <div class="stat-desc">de profesionales reportan fatiga operativa crónica</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2×</div>
+            <div class="stat-desc">más errores de decisión bajo saturación mental</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">40%</div>
+            <div class="stat-desc">de productividad perdida por baja recuperación</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="problema-body">
+          Las empresas no tienen un problema de productividad.<br>
+          Tienen un problema de <strong>energía mal gestionada.</strong>
+        </p>
+        <p class="problema-body">
+          Fatiga constante, falta de enfoque, saturación mental y baja recuperación
+          están afectando directamente el desempeño de los equipos — y los resultados
+          que tu organización necesita sostener.
+        </p>
+        <p class="problema-body">
+          La causa no está en la agenda. Está en el sistema que la sostiene.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA -->
+<section class="section propuesta">
+  <div class="container">
+    <div class="propuesta-inner">
+      <span class="label">La solución</span>
+      <h2 class="propuesta-heading">
+        La solución no es<br>más <em>esfuerzo.</em>
+      </h2>
+      <p class="propuesta-body">
+        Es un sistema que permite a las profesionales gestionar su energía
+        de forma estratégica, sostenible y medible — integrado en la realidad
+        del entorno laboral, no contra él.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- MODELO ENERGIA -->
+<section class="section modelo">
+  <div class="container">
+    <span class="label">Metodología</span>
+    <h2 class="modelo-heading">Modelo E.N.E.R.G.I.A.™</h2>
+    <div class="energia-list">
+
+      <div class="energia-item">
+        <div class="energia-letter">E</div>
+        <div>
+          <h3 class="energia-title"><span>Evaluar</span></h3>
+          <p class="energia-desc">Diagnóstico del estado energético del equipo. Identificamos las principales fugas de rendimiento antes de intervenir.</p>
+        </div>
+      </div>
+
+      <div class="energia-item">
+        <div class="energia-letter">N</div>
+        <div>
+          <h3 class="energia-title"><span>Nutrir</span></h3>
+          <p class="energia-desc">Base fisiológica del rendimiento. Sin el sustrato correcto, ninguna estrategia es sostenible.</p>
+        </div>
+      </div>
+
+      <div class="energia-item">
+        <div class="energia-letter">E</div>
+        <div>
+          <h3 class="energia-title"><span>Equilibrar</span></h3>
+          <p class="energia-desc">Micro rutinas aplicables dentro de la jornada laboral. Sin fricción. Sin tiempo extra.</p>
+        </div>
+      </div>
+
+      <div class="energia-item">
+        <div class="energia-letter">R</div>
+        <div>
+          <h3 class="energia-title"><span>Rendimiento</span></h3>
+          <p class="energia-desc">Impacto directo en calidad de decisiones, enfoque sostenido y productividad ejecutiva.</p>
+        </div>
+      </div>
+
+      <div class="energia-item">
+        <div class="energia-letter">G</div>
+        <div>
+          <h3 class="energia-title"><span>Gestión</span></h3>
+          <p class="energia-desc">Construcción de hábitos sostenibles. Sistemas que funcionan incluso bajo presión.</p>
+        </div>
+      </div>
+
+      <div class="energia-item">
+        <div class="energia-letter">I</div>
+        <div>
+          <h3 class="energia-title"><span>Integración</span></h3>
+          <p class="energia-desc">Aplicación dentro del entorno real de trabajo, no como módulo aislado.</p>
+        </div>
+      </div>
+
+      <div class="energia-item">
+        <div class="energia-letter">A</div>
+        <div>
+          <h3 class="energia-title"><span>Activación</span></h3>
+          <p class="energia-desc">Seguimiento, métricas y continuidad. Lo que no se mide, no se mantiene.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMA -->
+<section class="section programa">
+  <div class="container">
+    <span class="label">El programa</span>
+    <h2 class="programa-heading">¿Qué incluye?</h2>
+    <div class="programa-grid">
+
+      <div class="programa-card">
+        <span class="programa-num">01</span>
+        <h3 class="programa-title">Diagnóstico energético</h3>
+        <p class="programa-desc">Evaluación profunda del estado de energía del equipo. Identificación de fugas de rendimiento y patrones de desgaste.</p>
+      </div>
+
+      <div class="programa-card">
+        <span class="programa-num">02</span>
+        <h3 class="programa-title">Rutinas inteligentes</h3>
+        <p class="programa-desc">Sistema mínimo viable de alto desempeño. Micro-hábitos diseñados para integrarse en la jornada sin fricción.</p>
+      </div>
+
+      <div class="programa-card">
+        <span class="programa-num">03</span>
+        <h3 class="programa-title">Sistema VITAL™</h3>
+        <p class="programa-desc">Modelo de sostenibilidad personal y profesional. Estructura que funciona a largo plazo, no solo en sprint.</p>
+      </div>
+
+      <div class="programa-card">
+        <span class="programa-num">04</span>
+        <h3 class="programa-title">Implementación inmediata</h3>
+        <p class="programa-desc">Plan de acción de 30 días con seguimiento. Resultados visibles desde la primera semana.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section class="section resultados">
+  <div class="container">
+    <span class="label">Impacto</span>
+    <h2 class="resultados-heading">Resultados esperados</h2>
+    <div class="resultados-grid">
+      <div class="resultado-item">
+        <span class="resultado-icon">◈</span>
+        <p class="resultado-text">Mayor claridad mental</p>
+      </div>
+      <div class="resultado-item">
+        <span class="resultado-icon">◈</span>
+        <p class="resultado-text">Niveles de energía sostenibles</p>
+      </div>
+      <div class="resultado-item">
+        <span class="resultado-icon">◈</span>
+        <p class="resultado-text">Enfoque y productividad</p>
+      </div>
+      <div class="resultado-item">
+        <span class="resultado-icon">◈</span>
+        <p class="resultado-text">Reducción de fatiga operativa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="cta-inner">
+    <span class="label">Próximo paso</span>
+    <h2 class="cta-heading">
+      Solicita este programa<br>para tu <em>empresa</em>
+    </h2>
+    <div class="cta-divider"></div>
+    <p class="cta-sub">
+      Diseñado para organizaciones que entienden que el rendimiento sostenible
+      comienza desde la energía. No desde el esfuerzo.
+    </p>
+    <a href="mailto:hola@buildher.com" class="cta-btn">Solicitar información</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">BUILDHER Vital™</p>
+</footer>
+
+</body>
+</html>
