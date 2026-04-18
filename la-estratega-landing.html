@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA ESTRATEGA™ CONSULTING — Arquitectura Operativa & Estrategia Empresarial</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #24345f;
+    --navy-mid: #1e2c52;
+    --navy-light: #2d3f70;
+    --red: #E53935;
+    --red-dark: #C62828;
+    --white: #FFFFFF;
+    --off-white: #F2F3F5;
+    --gray-text: #B8BCC6;
+    --gray-mid: #6B7280;
+    --gold: #FFFFFF;
+    --gold-light: #D6DCF0;
+    --border: rgba(255,255,255,0.08);
+    --border-light: rgba(255,255,255,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; }
+  h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15; }
+  h3 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  p { color: var(--gray-text); font-weight: 300; line-height: 1.8; }
+
+  .eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .container-narrow { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+
+  section { padding: 6rem 0; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.5rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(36,52,95,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-cta {
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap { border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); overflow: hidden; padding: 1.2rem 0; margin-top: 72px; }
+  .marquee-track { display: flex; gap: 4rem; animation: marquee 20s linear infinite; white-space: nowrap; width: max-content; }
+  .marquee-track span { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+  .marquee-track span.dot { color: var(--red); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,255,255,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 2.5rem; }
+  .hero-tag-line { width: 2rem; height: 0.5px; background: var(--gold); }
+  .hero-headline { margin-bottom: 1rem; }
+  .hero-headline em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 300; color: var(--gray-text); max-width: 540px; margin-bottom: 3rem; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 5rem; }
+
+  .btn-primary {
+    background: var(--red); color: var(--white); border: none;
+    padding: 1rem 2.2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 0.5px solid rgba(255,255,255,0.25);
+    padding: 1rem 2.2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 0.5px solid var(--border); padding-top: 2.5rem; max-width: 600px; }
+  .stat-item { padding: 0 2rem 0 0; }
+  .stat-item + .stat-item { border-left: 0.5px solid var(--border); padding-left: 2rem; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-text); margin-top: 0.25rem; font-weight: 300; }
+
+  /* ── FRASE ── */
+  .frase-central { text-align: center; padding: 5rem 2rem; max-width: 800px; margin: 0 auto; }
+  .frase-central blockquote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; font-style: italic; color: var(--white); line-height: 1.3; border: none; }
+  .frase-central blockquote em { color: var(--gold); font-style: normal; }
+
+  /* ── PROBLEMA ── */
+  #problema { background: var(--navy-mid); }
+  .problema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .problema-list { list-style: none; margin-top: 2rem; }
+  .problema-list li { padding: 1rem 0; border-bottom: 0.5px solid var(--border); color: var(--gray-text); font-weight: 300; display: flex; align-items: flex-start; gap: 1rem; font-size: 0.95rem; }
+  .problema-list li::before { content: '—'; color: var(--red); flex-shrink: 0; margin-top: 0.1em; }
+  .diagnostico-box { background: var(--navy-light); border: 0.5px solid var(--border); border-left: 2px solid var(--red); padding: 2.5rem; }
+  .diagnostico-box .serif { font-size: 1.6rem; font-weight: 300; line-height: 1.4; color: var(--white); margin-top: 1rem; }
+
+  .marco-tag { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border: 0.5px solid rgba(255,255,255,0.2); color: var(--gold-light); }
+  .marco-tag-red { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.8rem; border: 0.5px solid var(--red); color: var(--white); }
+  .marco-arrow { color: var(--gray-mid); align-self: center; font-size: 0.75rem; }
+
+  /* ── PILARES ── */
+  #pilares { padding: 7rem 0; }
+  .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 4rem; background: var(--border); }
+  .pilar-card { background: var(--navy); padding: 3rem 2.5rem; transition: background 0.3s; position: relative; overflow: hidden; }
+  .pilar-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--red); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .pilar-card:hover::after { transform: scaleX(1); }
+  .pilar-card:hover { background: var(--navy-light); }
+  .pilar-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(255,255,255,0.08); line-height: 1; margin-bottom: 1.5rem; }
+  .pilar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin: 0.5rem 0 1rem; line-height: 1.2; }
+  .pilar-result { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-size: 0.82rem; color: var(--gold-light); font-weight: 300; letter-spacing: 0.04em; }
+  .pilar-result strong { color: var(--gold); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; }
+
+  /* ── METODOLOGÍA ── */
+  #metodologia { background: var(--navy-mid); padding: 7rem 0; }
+  .fases-list { margin-top: 4rem; }
+  .fase-item { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 0.5px solid var(--border); align-items: start; }
+  .fase-item:last-child { border-bottom: none; }
+  .fase-num-wrap { text-align: right; }
+  .fase-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(255,255,255,0.10); line-height: 1; }
+  .fase-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); margin-bottom: 0.5rem; }
+  .fase-desc { font-size: 0.92rem; color: var(--gray-text); font-weight: 300; line-height: 1.7; }
+
+  /* ── RESULTADOS ── */
+  #resultados { padding: 7rem 0; }
+  .resultados-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+  .resultado-card { background: var(--navy-light); border: 0.5px solid var(--border); padding: 2.5rem; position: relative; }
+  .resultado-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2rem; height: 2px; background: var(--red); }
+  .resultado-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); margin: 1.5rem 0 0.75rem; line-height: 1.3; }
+  .resultado-desc { font-size: 0.88rem; color: var(--gray-text); font-weight: 300; line-height: 1.7; }
+
+  /* ── PARA QUIÉN ── */
+  #para-quien { background: var(--navy-mid); padding: 7rem 0; }
+  .para-quien-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; margin-top: 4rem; background: var(--border); }
+  .para-quien-col { background: var(--navy); padding: 3.5rem; }
+  .pq-item { display: flex; gap: 1rem; padding: 0.8rem 0; border-bottom: 0.5px solid var(--border); font-size: 0.9rem; color: var(--gray-text); font-weight: 300; }
+  .pq-item:last-child { border-bottom: none; }
+  .pq-icon { flex-shrink: 0; width: 1.2rem; margin-top: 0.2rem; }
+  .pq-yes .pq-icon { color: var(--gold); }
+  .pq-no .pq-icon { color: var(--red); }
+
+  /* ── ESCENARIOS ── */
+  #escenarios { padding: 7rem 0; }
+  .escenarios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+  .escenario-card { border: 0.5px solid var(--border); padding: 2.5rem; transition: border-color 0.3s; }
+  .escenario-card:hover { border-color: rgba(255,255,255,0.25); }
+  .escenario-tag { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+  .escenario-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); margin-bottom: 1rem; line-height: 1.3; }
+
+  /* ── FAQ ── */
+  #faq { background: var(--navy-mid); padding: 7rem 0; }
+  .faq-list { margin-top: 3rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .faq-item { border-bottom: 0.5px solid var(--border); }
+  .faq-q { width: 100%; text-align: left; background: none; border: none; color: var(--white); padding: 1.75rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: color 0.2s; }
+  .faq-q:hover { color: var(--gold); }
+  .faq-arrow { flex-shrink: 0; color: var(--gold); font-size: 1rem; transition: transform 0.3s; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .faq-a p { color: var(--gray-text); font-size: 0.92rem; font-weight: 300; padding-bottom: 1.75rem; line-height: 1.8; }
+  .faq-item.open .faq-a { max-height: 300px; }
+  .faq-item.open .faq-arrow { transform: rotate(90deg); }
+
+  /* ── CONTACTO ── */
+  #contacto { padding: 8rem 0; position: relative; overflow: hidden; }
+  #contacto::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(229,57,53,0.06) 0%, transparent 70%); pointer-events: none; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+  .form-full { grid-column: 1 / -1; }
+  .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-field label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-text); font-weight: 500; }
+  .form-field input, .form-field textarea {
+    background: var(--navy-light); border: 0.5px solid rgba(255,255,255,0.1);
+    color: var(--white); padding: 0.9rem 1rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 300;
+    outline: none; transition: border-color 0.2s; resize: vertical;
+  }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: var(--gray-mid); }
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--gold); }
+  .form-submit { background: var(--red); color: var(--white); border: none; padding: 1.1rem 2.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; margin-top: 1rem; transition: background 0.2s; }
+  .form-submit:hover { background: var(--red-dark); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy-mid); border-top: 0.5px solid var(--border); padding: 3rem 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white); }
+  .footer-logo span { color: var(--gold); }
+  .footer-meta { font-size: 0.78rem; color: var(--gray-text); font-weight: 300; }
+
+  /* ── STICKY MOBILE ── */
+  .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--red); padding: 1rem 2rem; text-align: center; }
+  .sticky-cta a { color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none; }
+
+  /* ── UTILITIES ── */
+  .section-label { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::before { content: ''; display: block; width: 1.5rem; height: 0.5px; background: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .sticky-cta { display: block; }
+    body { padding-bottom: 3.5rem; }
+    .problema-grid,
+    .pilares-grid,
+    .resultados-grid,
+    .para-quien-grid,
+    .escenarios-grid,
+    .form-grid { grid-template-columns: 1fr; }
+    .metodologia-grid { grid-template-columns: 1fr !important; }
+    .fase-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+    section { padding: 4rem 0; }
+    nav { padding: 1rem 1.25rem; }
+    .hero-stats .stat-item { padding: 0 1rem 0 0; }
+    .hero-stats .stat-item + .stat-item { padding-left: 1rem; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-meta { text-align: center !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav>
+  <a href="#" class="nav-logo">LA ESTRATEGA<span>™</span></a>
+  <a href="#contacto" class="nav-cta">Diagnóstico estratégico</a>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Arquitectura Operativa</span><span class="dot">◆</span>
+    <span>Ingeniería de Ejecución</span><span class="dot">◆</span>
+    <span>IA con Propósito</span><span class="dot">◆</span>
+    <span>Blindaje de Criterio</span><span class="dot">◆</span>
+    <span>Pensamiento Estratégico</span><span class="dot">◆</span>
+    <span>Arquitectura Operativa</span><span class="dot">◆</span>
+    <span>Ingeniería de Ejecución</span><span class="dot">◆</span>
+    <span>IA con Propósito</span><span class="dot">◆</span>
+    <span>Blindaje de Criterio</span><span class="dot">◆</span>
+    <span>Pensamiento Estratégico</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <div class="hero-tag-line"></div>
+      <span class="eyebrow">Firma de Pensamiento Estratégico — LATAM</span>
+    </div>
+    <h1 class="hero-headline">
+      <span style="color: var(--red); font-style: normal;">Definimos la dirección.</span><br><em>Construimos la estructura que la sostiene.</em>
+    </h1>
+    <p class="hero-sub">LA ESTRATEGA™ acompaña a organizaciones a construir diferenciación real desde liderazgo, criterio y estrategia, integrando IA con propósito para construir la arquitectura operativa e instalar los sistemas que conviertan la visión en ejecución sostenida.</p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/laestratega-consulting" target="_blank" rel="noopener" class="btn-primary">Solicitar sesión de diagnóstico</a>
+      <a href="#pilares" class="btn-ghost">Ver metodología</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Fases de intervención</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Pilares integrados</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">01</div>
+        <div class="stat-label">Punto de entrada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRASE CENTRAL -->
+<div class="frase-central">
+  <blockquote>Una empresa no escala siendo una suma de personas haciendo tareas. Escala cuando se convierte en un <em>sistema de ejecución autónomo</em>, gobernado por criterio y sostenido por estructura.</blockquote>
+</div>
+
+<!-- EL PROBLEMA -->
+<section id="problema">
+  <div class="container">
+    <div class="problema-grid">
+      <div>
+        <span class="section-label">El problema real</span>
+        <h2>La dispersión no es un problema de visibilidad. Es un problema de <span class="serif" style="color: var(--gold); font-style: italic;">sistema.</span></h2>
+        <p style="margin-top: 1.5rem; font-size: 0.95rem;">Cuando una empresa crece, la complejidad no se resuelve con más marketing ni con otro plan. Se resuelve con dirección y estructura desde el origen del liderazgo.</p>
+        <ul class="problema-list" style="margin-top: 2rem;">
+          <li>Urgencias que interrumpen la operación cada semana</li>
+          <li>Retrabajo constante y reuniones de seguimiento infinitas</li>
+          <li>Decisiones reactivas en lugar de decisiones de sistema</li>
+          <li>El equipo espera al líder para cada cosa que debe avanzar</li>
+          <li>Crecimiento real, pero sin estructura que lo sostenga</li>
+        </ul>
+      </div>
+      <div>
+        <div class="diagnostico-box">
+          <span class="eyebrow">El diagnóstico de la firma</span>
+          <p class="serif">La desconexión entre la visión del liderazgo y la ejecución real del equipo es el origen de toda la dispersión operativa.</p>
+          <div style="margin-top: 2rem; padding-top: 2rem; border-top: 0.5px solid rgba(255,255,255,0.08);">
+            <p style="font-size: 0.85rem; color: var(--gray-text);">La solución no es un nuevo plan estratégico que el equipo intentará interpretar. La solución es instalar la arquitectura que hace que la estrategia se ejecute con precisión.</p>
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem; padding: 1.75rem; border: 0.5px solid var(--border);">
+          <span class="eyebrow" style="display: block; margin-bottom: 0.75rem;">Marco de intervención</span>
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+            <span class="marco-tag">Liderazgo</span>
+            <span class="marco-arrow">→</span>
+            <span class="marco-tag">Criterio</span>
+            <span class="marco-arrow">→</span>
+            <span class="marco-tag">Estrategia</span>
+            <span class="marco-arrow">→</span>
+            <span class="marco-tag">Marca</span>
+            <span class="marco-arrow">→</span>
+            <span class="marco-tag-red">Diferenciación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOS 3 PILARES -->
+<section id="pilares">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap;">
+      <div>
+        <span class="section-label">Los tres pilares</span>
+        <h2>Una intervención integrada,<br>no un servicio aislado.</h2>
+      </div>
+      <p style="max-width: 340px; font-size: 0.9rem; text-align: right;">Los tres pilares trabajan en sistema. Ninguno opera solo. Todos convergen en el mismo objetivo: estructura que se sostiene sin depender del líder.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-num">01</div>
+        <h3>Pilar uno</h3>
+        <div class="pilar-title">Arquitectura Operativa</div>
+        <p style="font-size: 0.88rem; line-height: 1.7;">Se diseña e instala la infraestructura completa: procesos, roles, responsables, estándares y ciclos de control. No se entrega un manual. Se instala una estructura operando desde el primer día.</p>
+        <div class="pilar-result">
+          <strong>Resultado esperado</strong>
+          Visibilidad real, menor fricción, menos retrabajo y ejecución consistente.
+        </div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-num">02</div>
+        <h3>Pilar dos</h3>
+        <div class="pilar-title">IA con Propósito</div>
+        <p style="font-size: 0.88rem; line-height: 1.7;">La IA se integra como soporte práctico dentro del sistema —no como moda—: documentación, control, estandarización, automatización y velocidad de ejecución sin perder criterio.</p>
+        <div class="pilar-result">
+          <strong>Resultado esperado</strong>
+          Reducción de tiempos operativos y del error humano. Consistencia premium.
+        </div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-num">03</div>
+        <h3>Pilar tres</h3>
+        <div class="pilar-title">Blindaje de Criterio</div>
+        <p style="font-size: 0.88rem; line-height: 1.7;">Se transfiere el ADN estratégico del liderazgo: criterios de decisión, prioridades, límites y estándares no negociables codificados dentro del sistema de operación.</p>
+        <div class="pilar-result">
+          <strong>Resultado esperado</strong>
+          El equipo ejecuta con autonomía. La operación deja de depender de la presencia del líder.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section id="metodologia">
+  <div class="container">
+    <span class="section-label">Metodología</span>
+    <div class="metodologia-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+      <div>
+        <h2>Del diagnóstico<br>a la autonomía.</h2>
+        <p style="margin-top: 1.5rem; font-size: 0.92rem;">Un proceso diseñado para instalar dirección y estructura —no solo recomendaciones—. Cada fase tiene un entregable concreto. Ninguna fase es opcional.</p>
+        <div style="margin-top: 3rem; padding: 2rem; border: 0.5px solid rgba(255,255,255,0.2); border-left: 2px solid var(--red);">
+          <span class="eyebrow" style="display: block; margin-bottom: 0.75rem;">Garantía conceptual de la firma</span>
+          <p style="font-size: 0.88rem; font-style: italic; color: var(--white);">"No se entrega un manual para leer. Se instala una estructura operando."</p>
+        </div>
+      </div>
+      <div class="fases-list">
+        <div class="fase-item">
+          <div class="fase-num-wrap"><div class="fase-num">1</div></div>
+          <div>
+            <div class="fase-name">Diagnóstico de fricción</div>
+            <p class="fase-desc">Se identifican los puntos donde se pierde tiempo, control y coherencia: cuellos de botella, fugas operativas y dependencias del liderazgo.</p>
+          </div>
+        </div>
+        <div class="fase-item">
+          <div class="fase-num-wrap"><div class="fase-num">2</div></div>
+          <div>
+            <div class="fase-name">Inmersión estratégica</div>
+            <p class="fase-desc">Se alinea la dirección real: prioridades, criterio de decisión, definición del modelo de ejecución y mapa de responsabilidades.</p>
+          </div>
+        </div>
+        <div class="fase-item">
+          <div class="fase-num-wrap"><div class="fase-num">3</div></div>
+          <div>
+            <div class="fase-name">Construcción</div>
+            <p class="fase-desc">Se diseña e instala la Arquitectura Operativa completa y el ecosistema digital donde vive —donde el equipo ejecuta, no interpreta.</p>
+          </div>
+        </div>
+        <div class="fase-item">
+          <div class="fase-num-wrap"><div class="fase-num">4</div></div>
+          <div>
+            <div class="fase-name">Adiestramiento</div>
+            <p class="fase-desc">Se entrena al equipo en ejecución con estándares definidos e integración de IA con propósito: uso aplicado, no teórico.</p>
+          </div>
+        </div>
+        <div class="fase-item">
+          <div class="fase-num-wrap"><div class="fase-num">5</div></div>
+          <div>
+            <div class="fase-name">Autonomía</div>
+            <p class="fase-desc">Ajuste fino y consolidación. El liderazgo se retira de la microgestión. El sistema sostiene la ejecución sin depender de su presencia constante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section id="resultados">
+  <div class="container">
+    <span class="section-label">Resultados esperados</span>
+    <h2>Lo que cambia cuando opera<br>un sistema, no un equipo.</h2>
+    <div class="resultados-grid">
+      <div class="resultado-card">
+        <div class="resultado-title">Claridad operativa en tiempo real</div>
+        <p class="resultado-desc">El liderazgo sabe qué ocurre, qué avanza y qué se detiene, sin persecución ni reuniones de seguimiento innecesarias. La operación es visible.</p>
+      </div>
+      <div class="resultado-card">
+        <div class="resultado-title">Velocidad de ejecución con consistencia</div>
+        <p class="resultado-desc">Tareas que antes tomaban días se resuelven en horas, manteniendo estándares y criterio sin depender de la intervención directa del líder.</p>
+      </div>
+      <div class="resultado-card">
+        <div class="resultado-title">Autonomía sin perder el control</div>
+        <p class="resultado-desc">El equipo toma decisiones tácticas correctas bajo el sistema, incluso cuando el liderazgo no está presente. El criterio opera por defecto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN ES -->
+<section id="para-quien">
+  <div class="container">
+    <span class="section-label" style="justify-content: center;">Alcance de la intervención</span>
+    <h2 style="text-align: center; margin-bottom: 1rem;">Para quién es.<br>Para quién no es.</h2>
+    <p style="text-align: center; font-size: 0.9rem; max-width: 500px; margin: 0 auto 0;">La claridad del alcance es parte del sistema. Trabajar con quien no es el perfil correcto no es coherente con la metodología de la firma.</p>
+    <div class="para-quien-grid">
+      <div class="para-quien-col">
+        <h3 style="margin-bottom: 1.5rem;">Es para usted si</h3>
+        <div class="pq-item pq-yes"><div class="pq-icon">✓</div><span>Es CEO, fundador/a o dueño/a de negocio con operación activa y equipo a cargo</span></div>
+        <div class="pq-item pq-yes"><div class="pq-icon">✓</div><span>Su empresa creció y la complejidad supera la estructura actual</span></div>
+        <div class="pq-item pq-yes"><div class="pq-icon">✓</div><span>Siente que la operación depende demasiado de su presencia para funcionar</span></div>
+        <div class="pq-item pq-yes"><div class="pq-icon">✓</div><span>Quiere escalar sin convertirse en el cuello de botella del crecimiento</span></div>
+        <div class="pq-item pq-yes"><div class="pq-icon">✓</div><span>Está dispuesto/a a instalar estructura, no solo escuchar recomendaciones</span></div>
+        <div class="pq-item pq-yes"><div class="pq-icon">✓</div><span>Busca una firma que trabaje desde el sistema de gobierno, no desde el marketing</span></div>
+      </div>
+      <div class="para-quien-col" style="background: var(--navy-light);">
+        <h3 style="margin-bottom: 1.5rem; color: var(--red);">No es para usted si</h3>
+        <div class="pq-item pq-no"><div class="pq-icon">✗</div><span>Busca un plan de acción para que su equipo lo interprete por su cuenta</span></div>
+        <div class="pq-item pq-no"><div class="pq-icon">✗</div><span>Espera resultados sin comprometerse con el proceso de intervención</span></div>
+        <div class="pq-item pq-no"><div class="pq-icon">✗</div><span>Necesita únicamente marketing, branding o presencia digital</span></div>
+        <div class="pq-item pq-no"><div class="pq-icon">✗</div><span>No tiene equipo ejecutivo ni operación establecida aún</span></div>
+        <div class="pq-item pq-no"><div class="pq-icon">✗</div><span>Busca asesoría puntual sin compromiso de implementación</span></div>
+        <div class="pq-item pq-no"><div class="pq-icon">✗</div><span>No está dispuesto/a a que la estructura cuestione los procesos actuales</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESCENARIOS -->
+<section id="escenarios">
+  <div class="container">
+    <span class="section-label">Casos de uso</span>
+    <h2>Cuándo interviene<br>LA ESTRATEGA™.</h2>
+    <div class="escenarios-grid">
+      <div class="escenario-card">
+        <div class="escenario-tag">Escenario 01 — Escala sin estructura</div>
+        <div class="escenario-title">El crecimiento superó la organización</div>
+        <p style="font-size: 0.88rem; line-height: 1.7;">La empresa duplicó su facturación en 18 meses. El equipo creció. Los procesos no. El liderazgo resuelve urgencias diarias y no tiene tiempo para la dirección estratégica. <strong style="color: var(--gold-light);">Se instala Arquitectura Operativa desde cero.</strong></p>
+      </div>
+      <div class="escenario-card">
+        <div class="escenario-tag">Escenario 02 — Dependencia del líder</div>
+        <div class="escenario-title">Nada avanza sin la presencia del CEO</div>
+        <p style="font-size: 0.88rem; line-height: 1.7;">El equipo tiene talento, pero espera validación para cada decisión. La operación se paraliza cuando el liderazgo no está disponible. <strong style="color: var(--gold-light);">Se aplica Blindaje de Criterio para transferir el ADN estratégico.</strong></p>
+      </div>
+      <div class="escenario-card">
+        <div class="escenario-tag">Escenario 03 — Ejecución inconsistente</div>
+        <div class="escenario-title">El equipo ejecuta pero el resultado varía</div>
+        <p style="font-size: 0.88rem; line-height: 1.7;">Hay voluntad y esfuerzo, pero los entregables no son consistentes. El estándar depende de quién ejecuta, no del sistema. <strong style="color: var(--gold-light);">Se integra IA con propósito para elevar consistencia y reducir error humano.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-label" style="justify-content: center;">Preguntas frecuentes</span>
+    <h2 style="text-align: center; margin-bottom: 1rem;">Claridad antes<br>de la conversación.</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿En qué se diferencia esta intervención de una consultoría tradicional?
+          <span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-a">
+          <p>La consultoría tradicional entrega recomendaciones y planes estratégicos. LA ESTRATEGA™ instala estructura operativa que funciona desde el primer día. No se entrega un documento para que el equipo lo interprete: se construye el sistema donde el equipo ejecuta con estándares, roles y ciclos de control definidos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuánto tiempo toma la intervención completa?
+          <span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-a">
+          <p>Depende de la complejidad de la operación y del alcance definido en el diagnóstico. Las intervenciones trabajan por fases y cada fase tiene entregables concretos con tiempos acordados. El diagnóstico inicial permite estimar el alcance total con precisión.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿La IA reemplaza al equipo en su propuesta?
+          <span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-a">
+          <p>No. La IA se integra como soporte práctico dentro del sistema de ejecución: reduce la fricción, minimiza el error humano y eleva la consistencia operativa. El equipo sigue siendo el ejecutor. La IA opera como infraestructura de apoyo con criterio definido por el liderazgo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Trabajan con empresas fuera de LATAM?
+          <span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-a">
+          <p>La firma trabaja principalmente con LATAM y República Dominicana, con capacidad transfronteriza y estándares de calidad uniformes sin importar ubicación. Las intervenciones se realizan de manera remota y presencial según los requerimientos de cada caso.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuál es el primer paso para trabajar con LA ESTRATEGA™?
+          <span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-a">
+          <p>El primer paso es una Sesión de Diagnóstico Estratégico donde se auditan los tres puntos críticos que hoy detienen el crecimiento, se evalúa si la estructura actual soporta escalabilidad y se define el alcance de la intervención necesaria. Sin ruido, sin promesas infladas.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿La intervención requiere cambiar todo el equipo o los procesos actuales?
+          <span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-a">
+          <p>No necesariamente. La intervención parte del diagnóstico real de la empresa. En muchos casos se trabaja sobre la estructura existente para refinarla, clarificarla y hacerla operable. El objetivo no es destruir lo construido; es instalar el sistema que lo hace funcionar con consistencia.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Con qué tipo de empresas trabaja la firma?
+          <span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-a">
+          <p>Empresas con operación activa, equipo a cargo y crecimiento real que generó complejidad. Principalmente CEOs, fundadores y equipos directivos que necesitan dirección estratégica y estructura operativa —no más tácticas de marketing o formación genérica.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL + FORMULARIO -->
+<section id="contacto">
+  <div class="container-narrow">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <span class="section-label" style="justify-content: center;">Primer paso</span>
+      <h2>La arquitectura de la libertad<br>comienza con una conversación.</h2>
+      <p style="margin-top: 1rem; font-size: 0.95rem; max-width: 500px; margin-left: auto; margin-right: auto;">Sesión de Diagnóstico Estratégico: se identifican 3 puntos críticos que hoy detienen el crecimiento, se evalúa la estructura actual y se define el mapa de intervención. Sin ruido. Sin compromiso previo.</p>
+    </div>
+    <div style="background: var(--navy-light); border: 0.5px solid var(--border); padding: 3rem;">
+      <form>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Su nombre" required>
+          </div>
+          <div class="form-field">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="correo@empresa.com" required>
+          </div>
+          <div class="form-field">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="+1 000 000 0000">
+          </div>
+          <div class="form-field form-full">
+            <label for="desafio">¿Qué está deteniendo su crecimiento hoy?</label>
+            <textarea id="desafio" name="desafio" rows="4" placeholder="Describa brevemente el desafío principal de su operación..."></textarea>
+          </div>
+        </div>
+        <a href="https://calendly.com/laestratega-consulting" target="_blank" rel="noopener" class="form-submit" style="display:inline-block; text-decoration:none;">Solicitar sesión de diagnóstico →</a>
+      </form>
+      <p style="margin-top: 1rem; font-size: 0.75rem; color: var(--gray-mid);">La información proporcionada se usa exclusivamente para preparar la sesión de diagnóstico. No se comparte con terceros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">LA ESTRATEGA<span>™</span> CONSULTING</div>
+      <div class="footer-meta" style="text-align: center;">
+        <span>Pensamiento Estratégico · Arquitectura Operativa · Ingeniería de Ejecución</span><br>
+        <span style="color: var(--gray-mid);">LATAM · República Dominicana</span>
+      </div>
+      <div class="footer-meta" style="text-align: right;">
+        <a href="mailto:laestratega.latam@gmail.com" style="color: var(--gray-text); text-decoration: none; font-size: 0.82rem;">laestratega.latam@gmail.com</a><br>
+        <span style="color: var(--gray-mid); font-size: 0.75rem;">© 2026 LA ESTRATEGA™ CONSULTING. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY CTA MOBILE -->
+<div class="sticky-cta">
+  <a href="#contacto">Solicitar sesión de diagnóstico →</a>
+</div>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Solicitud enviada ✓';
+      btn.style.background = '#2E7D32';
+    }, 1200);
+    /* Conectar aquí con su endpoint, Formspree, Mailchimp, etc. */
+  }
+</script>
+
+</body>
+</html>
